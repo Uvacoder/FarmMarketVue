@@ -80,21 +80,21 @@
             title: "Tomat",
             location: "Tallinn",
             description: "Hello world, my name is tomato, im red and round",
-            src: require("../pictures/tomat.jpg")
+            src: require("../assets/pictures/tomat.jpg")
           },
           {
             id: 2,
             title: "Apple",
             location: "Tartu",
             description: "Hello world, my name is apple, im yellow",
-            src: require("../pictures/apple.jpg")
+            src: require("../assets/pictures/apple.jpg")
           },
           {
             id: 3,
             title: "Strawberry",
             location: "Narva",
             description: "Hello world, my name is strawberry, im red",
-            src: require("../pictures/strawberry.jpg")
+            src: require("../assets/pictures/strawberry.jpg")
           }
 
         ]

@@ -6,25 +6,23 @@
     >
       <Header/>
     </v-app-bar>
-    <v-main>
-      <Hero/>
-      <LatestPost/>
-    </v-main>
+      <router-view/>
+    <v-footer>
+      <Footer/>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
-import Header from './components/Header';
-import Hero from "@/components/Hero";
-import LatestPost from "@/components/LatestPost";
+import Header from '@/components/Header';
+import Footer from "@/components/Footer";
 
 export default {
   name: 'App',
 
   components: {
-    LatestPost,
-    Hero,
     Header,
+    Footer
   },
 
   data: () => ({

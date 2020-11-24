@@ -1,25 +1,25 @@
 <template>
   <v-container>
-    <v-toolbar id="header" flat>
+    <v-toolbar flat>
       <v-toolbar-title>FarmMarket</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
         <v-btn text>
-          Main
+          <router-link to="/">Main</router-link>
         </v-btn>
 
         <v-btn text>
-          Shop
+          <router-link to="/shop">Shop</router-link>
         </v-btn>
 
         <v-btn text>
-          Create Account
+          <router-link to="/create_account">Create Account</router-link>
         </v-btn>
 
         <v-btn text>
-          My Account
+          <router-link to="/my_account">My Account</router-link>
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
