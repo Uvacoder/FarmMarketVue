@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <vn-container>
     <v-toolbar flat>
       <v-toolbar-title>FarmMarket</v-toolbar-title>
 
@@ -23,7 +23,7 @@
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
-  </v-container>
+  </vn-container>
 </template>
 
 <script>
