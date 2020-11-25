@@ -1,6 +1,6 @@
 <template>
     <div class="heroBlock">
-      <v-carousel hide-delimiters cycle>
+      <v-carousel hide-delimiters cycle height="150" align="top">
         <v-carousel-item
             v-for="(item,i) in items"
             :key="i"
@@ -10,7 +10,7 @@
         >
           <v-row
               class="fill-height title"
-              align="center"
+              align="top"
               justify="center"
           >
             <div>
