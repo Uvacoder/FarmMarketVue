@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-toolbar flat>
+  <v-container >
+    <v-toolbar flat class="mainHeader">
       <v-toolbar-title>FarmMarket</v-toolbar-title>
 
       <v-spacer></v-spacer>
