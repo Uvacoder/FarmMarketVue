@@ -56,22 +56,22 @@
     phone: '',
     phoneRules: [
       v => !!v || 'Phone is required',
-      v => /\d{6,}/.test(v) || 'Phone must be valid',
+      v => (v && v.length>6 && v.length<20 && /\+?\d*/.test(v)) || 'Phone must be valid',
     ],
     username: '',
     usernameRules: [
       v => !!v || 'Username is required, minimum of 6 characters',
-      v => /.{6,}/.test(v) || 'This username is already in use',
+      v => (v&& v.length>5 && v.length<20 && /./.test(v)) || 'This username is already in use',
     ],
     password: '',
     passwordRules: [
       v => !!v || 'Unique password is required',
-      v => (v && v.length>10 &&/.\d.\d./.test(v)) || 'Password should be at least 8 characters long and contain at least 2 numbers',
+      v => (v && v.length>7 && v.length<15 &&/.*\d.*\d.*/.test(v)) || 'Password should be at least 8 characters long and contain at least 2 numbers',
     ],
     repeatPassword: '',
     repeatPasswordRules: [
       v => !!v || 'Please repeat your password',
-      v =>(v && v.length>10 &&/.\d.\d./.test(v) )|| 'Password didn`t match',
+      v =>(v && v.length>7 && v.length<15 &&/.*\d.*\d.*/.test(v))|| 'Password didn`t match',
     ],
 
     checkbox: false,
