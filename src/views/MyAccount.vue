@@ -1,6 +1,6 @@
 <template>
-  <div>
     <v-main>
+      <Hero/>
           <div class="text-center">
             <div class="my-2">
               <v-btn x-large color="success" dark>
@@ -9,13 +9,13 @@
             </div>
           </div>
     </v-main>
-  </div>
 </template>
 
 <script>
+import Hero from "@/components/Hero";
 export default {
   name: 'MyAccount',
-
+components: { Hero},
   data () {
     return {
       items: [

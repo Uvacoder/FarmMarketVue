@@ -1,11 +1,6 @@
 <template>
   <v-content>
-    <div class="accountHeader">
-      <v-container>
-        <v-img alt="Tomati pilt" src="../assets/pictures/TomatAnna2.png">
-        </v-img>
-      </v-container>
-    </div>
+    <Hero/>
     <div class = "block">
       <v-container>
         <v-row class="fill-height" align="end" justify="center">
@@ -36,10 +31,12 @@
 </template>
 
 <script>
+import Hero from "@/components/Hero";
 
   export default {
     name: 'CreateAccount',
     components: {
+      Hero
     },
   data: () => ({
     valid: true,
