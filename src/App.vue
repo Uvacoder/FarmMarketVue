@@ -1,12 +1,24 @@
 <template>
-  <v-app width="200px">
+  <v-app>
     <v-app-bar
-      app
-      flat
+        app
+        flat
+
     >
+
+      <!--        <v-app-bar-nav-icon></v-app-bar-nav-icon>-->
+
       <Header/>
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+
     </v-app-bar>
-      <router-view/>
+
+    <router-view/>
+
+
+
     <v-footer>
       <Footer/>
     </v-footer>
@@ -14,8 +26,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header';
-import Footer from "@/components/Footer";
+import Header from '@/components/common/Header';
+import Footer from "@/components/common/Footer";
 
 export default {
   name: 'App',

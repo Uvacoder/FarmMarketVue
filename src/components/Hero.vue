@@ -1,6 +1,6 @@
 <template>
     <div class="heroBlock">
-      <v-carousel hide-delimiters cycle>
+      <v-carousel hide-delimiters cycle height="150" >
         <v-carousel-item
             v-for="(item,i) in items"
             :key="i"
@@ -10,7 +10,6 @@
         >
           <v-row
               class="fill-height title"
-              align="center"
               justify="center"
           >
             <div>
@@ -47,10 +46,5 @@
   }
 </script>
 
-<style>
-@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap);
-#hero {
-  font-family: 'Montserrat';
-}
 
-</style>
+
