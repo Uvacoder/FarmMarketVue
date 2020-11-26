@@ -1,6 +1,6 @@
 // application
 .v-application {
-  background: whitesmoke !important;
+  background: white !important;
   font: 300 #{$base-font-size}/#{$base-line-height} $base-font-family;
   font-weight: 300;
 
@@ -14,7 +14,9 @@
     }
   }
 }
+.navigationBar {
 
+}
 // block
 .block {
   padding: 60px 0;
