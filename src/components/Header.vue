@@ -3,7 +3,9 @@
     <v-toolbar flat>
       <v-toolbar-title>FarmMarket</v-toolbar-title>
 
+
       <v-spacer></v-spacer>
+
 
       <v-toolbar-items>
         <v-btn text>
@@ -21,8 +23,10 @@
         <v-btn text>
           <router-link to="/my_account">My Account</router-link>
         </v-btn>
+
       </v-toolbar-items>
     </v-toolbar>
+
   </v-container>
 </template>
 

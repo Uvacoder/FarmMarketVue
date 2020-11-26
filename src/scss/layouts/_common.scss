@@ -1,6 +1,6 @@
 // application
 .v-application {
-  background: $white !important;
+  background: whitesmoke !important;
   font: 300 #{$base-font-size}/#{$base-line-height} $base-font-family;
   font-weight: 300;
 
@@ -10,7 +10,7 @@
 
   .responsiveMenu {
     a {
-      color: $black;
+      color: black;
     }
   }
 }
@@ -18,7 +18,7 @@
 // block
 .block {
   padding: 60px 0;
-  border-bottom: 1px solid darken($white, 10%);
+  border-bottom: 1px solid darken(white, 10%);
 
   @media only screen and (max-width: 599px) {
     padding: 20px 0;
