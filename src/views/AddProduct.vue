@@ -11,12 +11,15 @@
           <v-card-text>
             <v-autocomplete
                 ref="category"
-                v-model="product.category"
-                :rules="[() => !!product.category || 'This field is required']"
-                :items="categories"
+                :rules="[() => !!result || 'This field is required']"
+                :items="result"
+                v-model="product.categoryId"
+                item-text="categoryName"
+                item-value="id"
                 label="Category"
                 required
             ></v-autocomplete>
+            {{categoryId}}
             <v-text-field
                 ref="productName"
                 v-model="product.productName"
@@ -97,14 +100,23 @@ let addProductFunc = function () {
       .then(response => alert(response.data.message))
 }
 
+
+let showResponse = function (){
+  let url = "http://localhost:8080/category";
+  this.$http.get(url)
+      .then(response => this.result = response.data)
+}
+
+
 export default {
   name: 'NewProduct',
 
   data: () => ({
-    categories: ['meat', 'diary', 'vegetables', 'fruits', 'flowers', 'eggs', 'mushrooms', 'fish'],
     errorMessages: '',
     formHasErrors: false,
-    product: {}
+    product: {},
+    result: [],
+    categoryId: 0
   }),
 
   computed: {
@@ -114,7 +126,7 @@ export default {
         description: this.product.productDescription,
         price: this.product.price,
         amount: this.product.amount,
-        category: this.product.category,
+        categoryId: this.product.categoryId,
       }
     },
   },
@@ -126,13 +138,10 @@ export default {
   },
 
   methods: {
-    addressCheck() {
-      this.errorMessages = this.address && !this.name
-          ? `Hey! I'm required`
-          : ''
+    addProduct: addProductFunc,
 
-      return true
-    },
+    showResponse : showResponse,
+
     resetForm() {
       this.errorMessages = []
       this.formHasErrors = false
@@ -150,7 +159,10 @@ export default {
         this.$refs[f].validate(true)
       })
     },
-    addProduct: addProductFunc
   },
+
+  created: function (){
+    this.showResponse()
+  }
 }
 </script>
