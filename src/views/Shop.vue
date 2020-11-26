@@ -2,11 +2,8 @@
   <v-content>
     <Hero/>
 
-
-    <v-row class="block latestPostBlock ">
-
-      <v-col md="2" class="pa-2 ">
-
+    <v-row class=" block ">
+      <v-col  col-md-2 offset-md="2" class="menu ">
           <v-toolbar dense floating>
             <v-text-field prepend-icon="mdi-magnify" single-line></v-text-field>
           </v-toolbar>
@@ -32,10 +29,10 @@
           </v-card>
 
       </v-col>
-      <v-col md="10" class="pa-10  ">
-        <v-row class="block latestPostBlock">
+      <v-col md="8" class="pa-8  ">
+        <v-row class="cards">
 
-          <v-col md="2" class="ml-auto" v-for="item in items" :key="item.id">
+          <v-col md="3" class="ml-auto" v-for="item in items" :key="item.id">
             <v-card outlined :loading="loading" class="mx-auto my-12">
               <template slot="progress">
                 <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
@@ -63,7 +60,9 @@
     <div class="text-center">
       <v-pagination v-model="page" :length="15" :total-visible="7"></v-pagination>
     </div>
+
   </v-content>
+
 </template>
 <script>
 import Hero from "@/components/Hero";
