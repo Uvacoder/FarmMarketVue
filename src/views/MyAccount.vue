@@ -67,7 +67,6 @@
 
                         <v-col cols="3" v-for="item in items" :key="item.id">
                           <v-card outlined
-                                  :loading="loading"
                                   class="mx-auto my-12"
                           >
                             <template slot="progress">
@@ -109,7 +108,6 @@
                               <v-btn
                                   color="deep-purple lighten-2"
                                   text
-                                  @click="edit"
                               >
                                 Edit
                               </v-btn>

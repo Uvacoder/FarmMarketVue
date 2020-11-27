@@ -95,14 +95,14 @@
 <script>
 
 let addProductFunc = function () {
-  let url = "http://localhost:8080/newProduct";
+  let url = "http://localhost:8090/newProduct";
   this.$http.post(url, this.product)
       .then(response => alert(response.data.message))
 }
 
 
 let showResponse = function (){
-  let url = "http://localhost:8080/category";
+  let url = "http://localhost:8090/category";
   this.$http.get(url)
       .then(response => this.result = response.data)
 }
