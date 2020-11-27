@@ -48,7 +48,7 @@
 
               <div class="col col-10">
                 <div>
-                  <div class="mx-4">
+                  <div class="mx-4 button">
                     <v-btn x-large color="success" dark>
                       <router-link to="/add_product">Add new Product</router-link>
                     </v-btn>
@@ -94,9 +94,9 @@
                               <div class="my-4">
                                 <div>{{ item.productDescription }}</div>
                               </div>
-                              <div class="my-4 body-2">
-                                <div>{{item.price}}</div>
-                                <div>{{item.price}}</div>
+                              <div class="my-4 body-2 subtitle-1">
+                                <div>$ {{item.price}}</div>
+                                <div>Amount: {{item.price}}</div>
                               </div>
                             </v-card-text>
                             <v-divider class="mx-4"></v-divider>
@@ -117,7 +117,6 @@
             </v-row>
           </v-container>
         </div>
-      {{categories}}
     </v-main>
 </template>
 

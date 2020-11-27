@@ -31,9 +31,6 @@
 
 // latest post block
 .latestPostBlock {
-  background: darken($white, 2%);
+  background: darken($white, 4%);
 
-  .v-card__title {
-    background: rgba(0, 0, 0, 0.3);
-  }
 }

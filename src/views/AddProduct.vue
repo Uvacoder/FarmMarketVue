@@ -7,7 +7,7 @@
           md="8"
           lg="6"
       >
-        <v-card ref="form">
+        <v-card ref="form" color="#FAFAFA">
           <v-card-text>
             <v-autocomplete
                 ref="category"
