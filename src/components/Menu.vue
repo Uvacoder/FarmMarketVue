@@ -3,7 +3,7 @@
   <div class="menu">
 
       <v-col class="menu" >
-        <v-card outlined elevation="2" width="276">
+        <v-card outlined elevation="2" width="200">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title align="center">PRODUCTS</v-list-item-title>

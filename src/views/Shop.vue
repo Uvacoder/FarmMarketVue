@@ -1,9 +1,11 @@
 <template>
+
   <v-main>
+
     <Hero/>
-    <div class="block latestPostBlock">
+    <div class="mainBlock" >
       <v-container>
-        <v-row class=" block ">
+        <v-row>
           <Menu/>
           <v-col md="8" class="pa-8  ">
             <v-row class="cards">
