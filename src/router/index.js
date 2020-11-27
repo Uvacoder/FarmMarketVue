@@ -8,6 +8,7 @@ import MyAccount from "@/views/MyAccount";
 import NotFound from "@/views/NotFound";
 import Shop from "@/views/Shop";
 import AddProduct from "@/views/AddProduct";
+import ForgotPassword from "@/views/ForgotPassword";
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,8 @@ const routes = [
     {path: '/my_account', component: MyAccount},
     {path: '/shop', component: Shop},
     {path: '*', component: NotFound},
-    {path: '/add_product', component: AddProduct}
+    {path: '/add_product', component: AddProduct},
+    {path: '/forgot_password', component: ForgotPassword}
 ]
 
 const router = new VueRouter({
