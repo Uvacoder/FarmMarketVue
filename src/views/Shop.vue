@@ -3,42 +3,17 @@
     <Hero/>
 
     <v-row class=" block ">
-      <v-col  col-md-2 offset-md="2" class="menu ">
-          <v-toolbar dense floating>
-            <v-text-field prepend-icon="mdi-magnify" single-line></v-text-field>
-          </v-toolbar>
-          <v-card outlined elevation="12" width="276">
-            <v-navigation-drawer floating permanent>
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title align="center">PRODUCTS</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
-              <v-list dense rounded>
-                <v-list-item v-for="item in items" :key="item.title" link>
-                  <v-list-item-icon>
-                    <v-icon>{{ item.icon }}</v-icon>
-                  </v-list-item-icon>
-                  <v-list-item-content>
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-            </v-navigation-drawer>
-          </v-card>
-
-      </v-col>
+      <Menu/>
       <v-col md="8" class="pa-8  ">
         <v-row class="cards">
 
-          <v-col md="3" class="ml-auto" v-for="item in items" :key="item.id">
+          <v-col md="3" class="ml-auto" v-for="item in category" :key="item.id">
             <v-card outlined :loading="loading" class="mx-auto my-12">
               <template slot="progress">
                 <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
               </template>
               <v-img height="100" v-bind:src="item.src"></v-img>
-              <v-card-title>{{ item.title }}</v-card-title>
+              <v-card-title>{{ item.category_name }}</v-card-title>
               <v-card-text>
                 <v-row align="center" class="mx-0">
                   <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
@@ -66,16 +41,18 @@
 </template>
 <script>
 import Hero from "@/components/Hero";
+import Menu from "@/components/Menu";
 
 export default {
   name: 'Shop',
   components: {
-    Hero,
+    Hero, Menu,
   },
   data() {
     return {
       page: 1,
       items: [
+          fetch("http://localhost:8090/getAllCategories"),
         {title: 'Meat', icon: "mdi-sausage"},
         {title: 'Fish', icon: 'mdi-shark-fin'},
         {title: 'Diary', icon: 'mdi-food-variant'},
