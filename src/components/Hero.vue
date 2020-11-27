@@ -1,18 +1,20 @@
 <template>
     <div class="heroBlock">
-      <v-carousel hide-delimiters cycle height="150" >
+      <v-carousel  :show-arrows="false" hide-delimiters cycle  height="100" >
         <v-carousel-item
             v-for="(item,i) in items"
             :key="i"
             :src="item.src"
             reverse-transition="fade-transition"
             transition="fade-transition"
+
+
         >
           <v-row
               class="fill-height title"
               justify="center"
           >
-            <div>
+            <div  >
               {{item.title}}
             </div>
           </v-row>
@@ -24,7 +26,6 @@
 <script>
   export default {
     name: 'Hero',
-
     data () {
       return {
         items: [

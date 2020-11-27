@@ -1,7 +1,9 @@
 header {
+
   background: white !important;
   .v-toolbar__title {
     font-weight: 600;
+
     text-transform: uppercase;
   }
 
@@ -13,6 +15,9 @@ header {
 }
 
 .mainHeader {
+display: flex;
+  justify-content: space-between;
+
   .v-toolbar__items {
     .v-btn__content {
       a {

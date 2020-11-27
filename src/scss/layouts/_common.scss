@@ -1,12 +1,11 @@
 // application
 .v-application {
   background: white !important;
+  width: 1200px;
+  margin: auto;
   font: 300 #{$base-font-size}/#{$base-line-height} $base-font-family;
   font-weight: 300;
 
-  .container {
-    max-width: 1200px;
-  }
 
   .responsiveMenu {
     a {
@@ -14,20 +13,26 @@
     }
   }
 }
-.menu {
 
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.cards {
 
-  margin-right: auto;
-  margin-left: auto;
-  border: 3px solid whitesmoke;
-  padding: 20px;
-  background-color: white;
+.menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  width: 300px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 // block
 .block {
-  background: whitesmoke;
+  background: white;
   padding: 60px 0;
   border-bottom: 1px solid darken(white, 10%);
 

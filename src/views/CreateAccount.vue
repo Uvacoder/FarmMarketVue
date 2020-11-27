@@ -1,4 +1,5 @@
 <template>
+
   <v-content>
     <Hero/>
     <div class = "block">

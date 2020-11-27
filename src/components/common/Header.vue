@@ -1,13 +1,14 @@
 <template>
   <v-container >
-    <v-toolbar flat class="mainHeader">
+
+      <v-toolbar flat class="mainHeader">
+        <div>
       <v-toolbar-title>FarmMarket</v-toolbar-title>
+        </div>
 
+       <v-toolbar-items>
+         <Search/>
 
-      <v-spacer></v-spacer>
-
-
-      <v-toolbar-items>
         <v-btn text>
           <router-link to="/">Main</router-link>
         </v-btn>
@@ -31,9 +32,10 @@
 </template>
 
 <script>
+  import Search from "@/components/Search";
   export default {
     name: 'Header',
-
+    components: {Search},
     data: () => ({
     }),
   }
