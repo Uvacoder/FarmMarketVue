@@ -32,20 +32,13 @@
                       </v-list-item-content>
                     </v-list-item>
                     <v-divider></v-divider>
-                    <v-list
-                        dense
-                        rounded
-                    >
-                      <v-list-item
-                          v-for="item in items"
-                          :key="item.title"
-                          link
-                      >
-                        <v-list-item-icon>
-                          <v-icon>{{ item.icon }}</v-icon>
-                        </v-list-item-icon>
+                    <v-list dense rounded>
+                      <v-list-item v-for="item in categories" :key="item.id">
+<!--                        <v-list-item-icon>-->
+<!--                          <v-icon>{{ item.icon }}</v-icon>-->
+<!--                        </v-list-item-icon>-->
                         <v-list-item-content>
-                          <v-list-item-title>{{ item.title }}</v-list-item-title>
+                          <v-list-item-title>{{ item.categoryName}}</v-list-item-title>
                         </v-list-item-content>
                       </v-list-item>
                     </v-list>
@@ -65,7 +58,7 @@
                   <div class="container">
                     <div class="row">
 
-                        <v-col cols="3" v-for="item in items" :key="item.id">
+                        <v-col cols="3" v-for="item in products" :key="item.id">
                           <v-card outlined
                                   class="mx-auto my-12"
                           >
@@ -80,7 +73,7 @@
                                 height="100"
                                 v-bind:src="item.src"
                             ></v-img>
-                            <v-card-title>{{ item.title }}</v-card-title>
+                            <v-card-title>{{ item.productName }}</v-card-title>
                             <v-card-text>
                               <v-row
                                   align="center"
@@ -98,10 +91,13 @@
                                   4.5 (413)
                                 </div>
                               </v-row>
-                              <div class="my-4 subtitle-1">
-                                {{ item.location }}
+                              <div class="my-4">
+                                <div>{{ item.productDescription }}</div>
                               </div>
-                              <div>{{ item.description }}</div>
+                              <div class="my-4 body-2">
+                                <div>{{item.price}}</div>
+                                <div>{{item.price}}</div>
+                              </div>
                             </v-card-text>
                             <v-divider class="mx-4"></v-divider>
                             <v-card-actions>
@@ -121,28 +117,62 @@
             </v-row>
           </v-container>
         </div>
+      {{categories}}
     </v-main>
 </template>
 
 <script>
+
 import Hero from "@/components/Hero";
+
+let getCategories = function (){
+  let url = "http://localhost:8090/category";
+  this.$http.get(url)
+      .then(response => this.categories = response.data)
+}
+
+let getProducts = function (){
+  let url = "http://localhost:8090/product";
+  this.$http.get(url)
+      .then(response => this.products = response.data)
+}
+
 export default {
   name: 'MyAccount',
-components: { Hero},
-  data () {
-    return {
-      items: [
-        {title: 'Meat', icon: "mdi-sausage"},
-        {title: 'Fish', icon: 'mdi-shark-fin'},
-        {title: 'Diary', icon: 'mdi-food-variant'},
-        {title: 'Eggs', icon: 'mdi-egg'},
-        {title: 'Fruits', icon: 'mdi-apple'},
-        {title: 'Vegetables', icon: 'mdi-carrot'},
-        {title: 'Flowers', icon: 'mdi-sprout'},
-        {title: 'Mushrooms', icon: 'mdi-mushroom'},
-        {title: 'Other', icon: 'mdi-tractor'},
-      ],
-    }
+
+  components: {
+      Hero
   },
+
+  data: () => ({
+    products : [],
+    categories: [],
+    categoryId: 0
+  }),
+
+  methods: {
+    getCategoriesFunc: getCategories,
+    getProductsFunc: getProducts
+  },
+  created: function (){
+    this.getCategoriesFunc(),
+    this.getProductsFunc()
+  }
+
+  // data () {
+  //   return {
+  //     items: [
+  //       {title: 'Meat', icon: "mdi-sausage"},
+  //       {title: 'Fish', icon: 'mdi-shark-fin'},
+  //       {title: 'Diary', icon: 'mdi-food-variant'},
+  //       {title: 'Eggs', icon: 'mdi-egg'},
+  //       {title: 'Fruits', icon: 'mdi-apple'},
+  //       {title: 'Vegetables', icon: 'mdi-carrot'},
+  //       {title: 'Flowers', icon: 'mdi-sprout'},
+  //       {title: 'Mushrooms', icon: 'mdi-mushroom'},
+  //       {title: 'Other', icon: 'mdi-tractor'},
+  //     ],
+  //   }
+  // },
 }
 </script>
