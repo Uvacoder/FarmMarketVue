@@ -1,11 +1,20 @@
 <template>
     <v-main>
       <Hero/>
-        <div class="block">
+        <div class="block latestPostBlock">
           <v-container>
             <h2 class="text-center">My Account</h2>
             <v-row>
               <div class="col col-2">
+                <v-toolbar
+                    dense
+                    floating
+                >
+                  <v-text-field
+                      prepend-icon="mdi-magnify"
+                      single-line
+                  ></v-text-field>
+                </v-toolbar>
                 <v-card
                     outlined
                     elevation="12"
@@ -45,15 +54,72 @@
               </div>
 
               <div class="col col-10">
-                <div class="text-center">
-                  <div class="my-2">
+                <div>
+                  <div class="mx-4">
                     <v-btn x-large color="success" dark>
                       <router-link to="/add_product">Add new Product</router-link>
                     </v-btn>
                   </div>
                 </div>
-                <div class="v-main__wrap"><div class="container"><div class="row"><div class="mt-2 col col-12"><strong>Category 1</strong></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="mt-2 col col-12"><strong>Category 2</strong></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="mt-2 col col-12"><strong>Category 3</strong></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="mt-2 col col-12"><strong>Category 4</strong></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div><div class="col-md-2 col-6"><div class="v-sheet theme--light" style="height: 150px;"></div></div></div></div></div>
-              </div>
+                <div class="v-main__wrap">
+                  <div class="container">
+                    <div class="row">
+
+                        <v-col cols="3" v-for="item in items" :key="item.id">
+                          <v-card outlined
+                                  :loading="loading"
+                                  class="mx-auto my-12"
+                          >
+                            <template slot="progress">
+                              <v-progress-linear
+                                  color="deep-purple"
+                                  height="10"
+                                  indeterminate
+                              ></v-progress-linear>
+                            </template>
+                            <v-img
+                                height="100"
+                                v-bind:src="item.src"
+                            ></v-img>
+                            <v-card-title>{{ item.title }}</v-card-title>
+                            <v-card-text>
+                              <v-row
+                                  align="center"
+                                  class="mx-0"
+                              >
+                                <v-rating
+                                    :value="4.5"
+                                    color="amber"
+                                    dense
+                                    half-increments
+                                    readonly
+                                    size="14"
+                                ></v-rating>
+                                <div class="grey--text ml-4">
+                                  4.5 (413)
+                                </div>
+                              </v-row>
+                              <div class="my-4 subtitle-1">
+                                {{ item.location }}
+                              </div>
+                              <div>{{ item.description }}</div>
+                            </v-card-text>
+                            <v-divider class="mx-4"></v-divider>
+                            <v-card-actions>
+                              <v-btn
+                                  color="deep-purple lighten-2"
+                                  text
+                                  @click="edit"
+                              >
+                                Edit
+                              </v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-col>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </v-row>
           </v-container>
         </div>
