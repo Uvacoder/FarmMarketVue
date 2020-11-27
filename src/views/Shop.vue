@@ -7,12 +7,13 @@
       <v-container>
         <v-row>
           <Menu/>
-          <v-col md="8" class="pa-8  ">
-            <v-row class="cards">
-              <v-col md="3" class="ml-auto" v-for="item in category" :key="item.id">
-              </v-col>
-            </v-row>
-          </v-col>
+          <Card/>
+<!--          <v-col md="8" class="pa-8  ">-->
+<!--            <v-row>-->
+<!--              <v-col md="3" class="ml-auto" v-for="item in category" :key="item.id">-->
+<!--              </v-col>-->
+<!--            </v-row>-->
+<!--          </v-col>-->
           <v-spacer></v-spacer>
         </v-row>
         <div class="text-center">
@@ -25,11 +26,13 @@
 <script>
 import Hero from "@/components/Hero";
 import Menu from "@/components/Menu";
+import Card from "@/components/Card";
 
 
 export default {
   name: 'Shop',
   components: {
+    Card,
 
     Hero, Menu,
   },
