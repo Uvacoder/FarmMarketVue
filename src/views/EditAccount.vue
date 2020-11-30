@@ -126,7 +126,7 @@ let getProducts = function () {
 }
 
 export default {
-  name: 'MyAccount',
+  name: 'EditAccount',
 
   components: {
     Hero
