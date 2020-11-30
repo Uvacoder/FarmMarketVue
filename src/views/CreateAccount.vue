@@ -42,7 +42,7 @@
         '
       </v-container>
     </div>
-  </v-main>
+  </v-content>
 </template>
 
 <script>
