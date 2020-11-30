@@ -6,10 +6,10 @@
         <v-card outlined elevation="2" width="200">
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title align="center">PRODUCTS</v-list-item-title>
+              <v-list-item-title align="center" class="subSubHeader">PRODUCTS</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-divider></v-divider>
+
           <v-list dense rounded>
             <v-list-item v-for="item in categories" :key="item.id">
               <v-list-item-icon>
@@ -39,19 +39,6 @@ export default {
   data: () => ({
     categories: [],
     categoryId: 0,
-    // return {
-    //   items: [
-    //     {title: 'Meat', icon: "mdi-sausage"},
-    //     {title: 'Fish', icon: 'mdi-shark-fin'},
-    //     {title: 'Diary', icon: 'mdi-food-variant'},
-    //     {title: 'Eggs', icon: 'mdi-egg'},
-    //     {title: 'Fruits', icon: 'mdi-apple'},
-    //     {title: 'Vegetables', icon: 'mdi-carrot'},
-    //     {title: 'Flowers', icon: 'mdi-sprout'},
-    //     {title: 'Mushrooms', icon: 'mdi-mushroom'},
-    //     {title: 'Other', icon: 'mdi-tractor'},
-    //   ],
-    // }
   }),
   methods: {
     getCategoriesFunc: getAllCategories,

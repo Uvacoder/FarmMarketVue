@@ -3,11 +3,9 @@
   background: white !important;
   width: 1200px;
   margin: auto;
-
+;
   font: 300 #{$base-font-size}/#{$base-line-height} $base-font-family;
   font-weight: 300;
-
-
   .responsiveMenu {
     a {
       color: black;
@@ -162,4 +160,27 @@ iframe {
   width: 184px;
   margin-bottom: -50px;
   }
+.subHeader {
+  margin-block: 20px;
+  background: #000000;
+  color: white;
+  padding: 20px;
+  border: 1px solid darken(white, 25%);
 
+  @media only screen and (max-width: 599px) {
+    padding: 20px 0;
+  }
+
+}
+.subSubHeader {
+  background: #000000;
+  color: white;
+  padding: 10px ;
+
+}
+.menuClass {
+
+}
+.cardClass {
+  height: 1000px;
+}
