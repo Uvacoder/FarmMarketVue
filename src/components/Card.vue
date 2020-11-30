@@ -52,7 +52,7 @@
                     color="deep-purple lighten-2"
                     text
                 >
-                  Edit
+                  BUY
                 </v-btn>
               </v-card-actions>
             </v-card>
