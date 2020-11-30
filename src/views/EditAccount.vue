@@ -111,7 +111,9 @@
 
 <script>
 
+
 import Hero from "@/components/Hero";
+
 
 let getCategories = function () {
   let url = "http://localhost:8090/category";
@@ -126,8 +128,7 @@ let getProducts = function () {
 }
 
 export default {
-  name: 'MyAccount',
-
+  name: 'EditAccount',
   components: {
     Hero
   },
@@ -153,3 +154,4 @@ export default {
 
 }
 </script>
+

@@ -1,3 +1,4 @@
+
 <template>
   <div class="block latestPostBlock">
     <v-container>
@@ -30,25 +31,16 @@
 </template>
 
 <script>
-/*
+
 let showLatestFunc = function(){
-     let url = "http://localhost:8090/showProduct";
+     let url = "http://localhost:8090/getLatestProducts";
      this.$http.get(url)
-     .then(response => this.result = response.data)
+     .then(response => this.items = response.data)
 }
-*/
 
 export default {
   name: 'LatestPost',
-/*
-  data: () => ({
-    errorMessages: '',
-    formHasErrors: false,
-    product: {},
-    result: [],
-    categoryId: 0
-  }),
-*/
+
 
   data() {
     return {
@@ -74,14 +66,15 @@ export default {
           description: "Hello world, my name is strawberry, im red",
           src: require("../assets/pictures/strawberry.jpg")
         }
-
-      ]
+      ],
     };
   },
   methods: {
-  //  showLatest : showLatestFunc
+    showLatest : showLatestFunc
   }
 };
+
+
 </script>
 
 
