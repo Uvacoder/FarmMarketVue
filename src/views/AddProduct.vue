@@ -98,7 +98,6 @@ let addProductFunc = function () {
   let url = "http://localhost:8090/newProduct";
   this.$http.post(url, this.product)
       .then(response => alert(response.data.message))
-
 }
 
 
