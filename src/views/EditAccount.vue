@@ -1,9 +1,9 @@
 <template>
   <v-main>
     <Hero/>
+    <v-toolbar-title class="subHeader text-center">MY ACCOUNT</v-toolbar-title>
     <div class="block latestPostBlock">
       <v-container>
-        <h2 class="text-center">My Account</h2>
         <v-row>
           <div class="col col-3">
             <v-card
