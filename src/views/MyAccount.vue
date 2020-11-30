@@ -158,20 +158,5 @@ export default {
     this.getProductsFunc()
   }
 
-  // data () {
-  //   return {
-  //     items: [
-  //       {title: 'Meat', icon: "mdi-sausage"},
-  //       {title: 'Fish', icon: 'mdi-shark-fin'},
-  //       {title: 'Diary', icon: 'mdi-food-variant'},
-  //       {title: 'Eggs', icon: 'mdi-egg'},
-  //       {title: 'Fruits', icon: 'mdi-apple'},
-  //       {title: 'Vegetables', icon: 'mdi-carrot'},
-  //       {title: 'Flowers', icon: 'mdi-sprout'},
-  //       {title: 'Mushrooms', icon: 'mdi-mushroom'},
-  //       {title: 'Other', icon: 'mdi-tractor'},
-  //     ],
-  //   }
-  // },
 }
 </script>
