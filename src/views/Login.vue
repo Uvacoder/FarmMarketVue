@@ -33,12 +33,15 @@
 </template>
 
 <script>
+import router from "@/router";
+
 let loginFunc = function () {
   let url = "http://localhost:8090/login";
   this.$http.post(url, this.user)
       .then(response => {
         localStorage.setItem("user-token", response.data);
         this.$http.defaults.headers.common['Authorization'] = "Bearer" + response.data;
+        router.push("/my_account");
       }
       )
 }
