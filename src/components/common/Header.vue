@@ -3,7 +3,7 @@
 
       <v-toolbar flat class="mainHeader">
         <div>
-      <v-toolbar-title>FarmMarket</v-toolbar-title>
+      <v-toolbar-title class="subSubHeader">FarmMarket</v-toolbar-title>
         </div>
 
        <v-toolbar-items>
