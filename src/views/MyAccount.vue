@@ -75,6 +75,13 @@
                             ></v-img>
                             <v-card-title>{{ item.productName }}</v-card-title>
                             <v-card-text>
+                              <div class="my-4">
+                                <div>$ {{item.price}}</div>
+                                <div>Amount: {{item.amount}}</div>
+                              </div>
+                              <div class="my-4">
+                                <div>{{ item.productDescription }}</div>
+                              </div>
                               <v-row
                                   align="center"
                                   class="mx-0"
@@ -91,13 +98,6 @@
                                   4.5 (413)
                                 </div>
                               </v-row>
-                              <div class="my-4">
-                                <div>{{ item.productDescription }}</div>
-                              </div>
-                              <div class="my-4 body-2 subtitle-1">
-                                <div>$ {{item.price}}</div>
-                                <div>Amount: {{item.price}}</div>
-                              </div>
                             </v-card-text>
                             <v-divider class="mx-4"></v-divider>
                             <v-card-actions>
