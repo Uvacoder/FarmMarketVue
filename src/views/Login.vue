@@ -11,7 +11,7 @@
       <v-card-text>
         <v-text-field
             v-model="user.userName"
-            label="Name"
+            label="Username"
         ></v-text-field>
         <v-text-field
             v-model="user.password"
@@ -31,12 +31,15 @@
 </template>
 
 <script>
+import router from "@/router";
+
 let loginFunc = function () {
   let url = "http://localhost:8090/login";
   this.$http.post(url, this.user)
       .then(response => {
         localStorage.setItem("user-token", response.data);
         this.$http.defaults.headers.common['Authorization'] = "Bearer" + response.data;
+        router.push("/my_account");
       }
       )
 

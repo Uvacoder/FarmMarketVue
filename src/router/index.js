@@ -23,6 +23,7 @@ const routes = [
     {path: '/add_product', component: AddProduct},
     {path: '/forgot_password', component: ForgotPassword},
     {path: '/login', component: Login}
+
 ]
 
 const router = new VueRouter({
