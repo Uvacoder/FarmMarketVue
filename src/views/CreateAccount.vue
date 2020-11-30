@@ -1,7 +1,5 @@
 <template>
-
   <v-content>
-
     <Hero/>
     <div class="block">
       <v-container>
@@ -12,7 +10,7 @@
     </div>
     <div class="block">
       <v-container>
-        <v-form ref="form" v-model="valid" lazy-validation>
+        <v-form ref="form" v-model="valid">
           <v-text-field ref="SellerName" v-model="seller.name" :rules="nameRules" label="Name / for clients to appear"
                         required></v-text-field>
           <v-text-field ref="SellerEmail" v-model="seller.email" :rules="emailRules" label="E-mail"
@@ -39,10 +37,9 @@
             <router-link to="/forgot_password">Forgot your password?</router-link>
           </v-btn>
         </v-form>
-        '
       </v-container>
     </div>
-  </v-main>
+  </v-content>
 </template>
 
 <script>
