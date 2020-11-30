@@ -34,7 +34,6 @@
 let loginFunc = function () {
   let url = "http://localhost:8090/login";
   this.$http.post(url, this.user)
-//      .then(response => alert(response.data.message))
 }
 
 export default {
