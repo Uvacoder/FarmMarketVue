@@ -1,4 +1,5 @@
 <template>
+
 <v-main>
 <v-row justify="center">
   <v-col
@@ -28,6 +29,7 @@
   </v-col>
 </v-row>
 </v-main>
+
 </template>
 
 <script>
@@ -42,7 +44,6 @@ let loginFunc = function () {
         router.push("/my_account");
       }
       )
-
 }
 export default {
   name: 'Login',
@@ -53,4 +54,5 @@ export default {
     login: loginFunc
   }
 }
+
 </script>

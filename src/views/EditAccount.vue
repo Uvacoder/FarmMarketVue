@@ -110,22 +110,29 @@
 </template>
 
 <script>
+
+
 import Hero from "@/components/Hero";
+
+
 let getCategories = function () {
   let url = "http://localhost:8090/category";
   this.$http.get(url)
       .then(response => this.categories = response.data)
 }
+
 let getProducts = function () {
   let url = "http://localhost:8090/product";
   this.$http.get(url)
       .then(response => this.products = response.data)
 }
+
 export default {
   name: 'EditAccount',
   components: {
     Hero
   },
+
   data: () => ({
     products: [],
     categories: [],
@@ -135,6 +142,7 @@ export default {
       {title: 'Account', icon: 'mdi-account-box'},
     ],
   }),
+
   methods: {
     getCategoriesFunc: getCategories,
     getProductsFunc: getProducts
@@ -143,5 +151,7 @@ export default {
     this.getCategoriesFunc(),
         this.getProductsFunc()
   }
+
 }
 </script>
+

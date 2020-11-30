@@ -1,8 +1,9 @@
 <template>
-    <v-content>
+    <v-main>
       <Hero/>
+      <v-toolbar-title class="subHeader text-center">MAIN</v-toolbar-title>
       <LatestPost/>
-    </v-content>
+    </v-main>
 </template>
 
 <script>
