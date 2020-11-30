@@ -10,7 +10,7 @@
     </div>
     <div class="block">
       <v-container>
-        <v-form ref="form" v-model="valid" lazy-validation>
+        <v-form ref="form" v-model="valid">
           <v-text-field ref="SellerName" v-model="seller.name" :rules="nameRules" label="Please enter your name"
                         required></v-text-field>
           <v-text-field ref="SellerUsername" v-model="seller.username" :rules="usernameRules"

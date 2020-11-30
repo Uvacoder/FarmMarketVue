@@ -9,6 +9,7 @@ import NotFound from "@/views/NotFound";
 import Shop from "@/views/Shop";
 import AddProduct from "@/views/AddProduct";
 import ForgotPassword from "@/views/ForgotPassword";
+import Login from "@/views/Login";
 
 Vue.use(VueRouter)
 
@@ -20,7 +21,8 @@ const routes = [
     {path: '/shop', component: Shop},
     {path: '*', component: NotFound},
     {path: '/add_product', component: AddProduct},
-    {path: '/forgot_password', component: ForgotPassword}
+    {path: '/forgot_password', component: ForgotPassword},
+    {path: '/login', component: Login}
 ]
 
 const router = new VueRouter({

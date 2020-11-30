@@ -25,6 +25,10 @@
           <router-link to="/my_account">My Account</router-link>
         </v-btn>
 
+         <v-btn text>
+           <router-link to="/login">Login</router-link>
+         </v-btn>
+
       </v-toolbar-items>
     </v-toolbar>
 
