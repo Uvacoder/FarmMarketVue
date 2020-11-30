@@ -5,56 +5,56 @@
           <v-container>
             <h2 class="text-center">My Account</h2>
             <v-row>
-              <div class="col col-2">
-                <v-toolbar
-                    dense
-                    floating
-                >
-                  <v-text-field
-                      prepend-icon="mdi-magnify"
-                      single-line
-                  ></v-text-field>
-                </v-toolbar>
+              <div class="col col-3">
                 <v-card
-                    outlined
-                    elevation="12"
-                    width="276"
+                    class="mx-auto"
+                    height="300"
+                    width="256"
                 >
                   <v-navigation-drawer
-                      floating
+                      class="deep-orange accent-5"
+                      dark
                       permanent
                   >
-                    <v-list-item>
-                      <v-list-item-content>
-                        <v-list-item-title align="center">
-                          PRODUCTS
-                        </v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-                    <v-divider></v-divider>
-                    <v-list dense rounded>
-                      <v-list-item v-for="item in categories" :key="item.id">
-<!--                        <v-list-item-icon>-->
-<!--                          <v-icon>{{ item.icon }}</v-icon>-->
-<!--                        </v-list-item-icon>-->
+                    <v-list>
+                      <v-list-item link>
+                        <v-list-item-icon>
+                          <v-icon>mdi-view-dashboard</v-icon>
+                        </v-list-item-icon>
+
                         <v-list-item-content>
-                          <v-list-item-title>{{ item.categoryName}}</v-list-item-title>
+                          <v-list-item-title>My Products</v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+
+                      <v-list-item link>
+                        <v-list-item-icon>
+                          <v-icon>mdi-account-box</v-icon>
+                        </v-list-item-icon>
+
+                        <v-list-item-content>
+                          <v-list-item-title><router-link to="edit_account" tag="none">Edit Account</router-link></v-list-item-title>
                         </v-list-item-content>
                       </v-list-item>
                     </v-list>
+
+                    <template v-slot:append>
+                      <div class="pa-2">
+                        <v-btn block>
+                          Logout
+                        </v-btn>
+                      </div>
+                    </template>
                   </v-navigation-drawer>
                 </v-card>
               </div>
 
-              <div class="col col-10">
-                <div>
+              <div class="col col-9">
                   <div class="mx-4 button">
                     <v-btn x-large color="success" dark>
                       <router-link to="/add_product">Add new Product</router-link>
                     </v-btn>
                   </div>
-                </div>
-                <div class="v-main__wrap">
                   <div class="container">
                     <div class="row">
 
@@ -113,7 +113,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
             </v-row>
           </v-container>
         </div>
@@ -146,7 +145,11 @@ export default {
   data: () => ({
     products : [],
     categories: [],
-    categoryId: 0
+    categoryId: 0,
+    items: [
+      { title: 'My Products', icon: 'mdi-view-dashboard' },
+      { title: 'Account', icon: 'mdi-account-box' },
+    ],
   }),
 
   methods: {

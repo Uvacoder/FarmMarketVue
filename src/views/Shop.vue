@@ -1,7 +1,5 @@
 <template>
-
   <v-main>
-
     <Hero/>
     <div class="mainBlock" >
       <v-container>
