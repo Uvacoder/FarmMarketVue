@@ -3,16 +3,13 @@
     <Hero/>
   <v-toolbar-title class="subHeader text-center">CREATE ACCOUNT</v-toolbar-title>
     <div class="block mainBlock">
-
-
-
-
       <v-container>
         <v-row class="fill-height" align="end" justify="center">
           <h2>Become a seller. Register now!</h2>
         </v-row>
 
         <v-form ref="form" v-model="valid" lazy-validation>
+
           <v-text-field ref="SellerName" v-model="seller.name" :rules="nameRules" label="Name / for clients to appear"
                         required></v-text-field>
           <v-text-field ref="SellerEmail" v-model="seller.email" :rules="emailRules" label="E-mail"

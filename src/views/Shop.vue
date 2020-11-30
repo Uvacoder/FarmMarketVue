@@ -13,7 +13,6 @@
           <Card/>
 </div>
 
-
         </v-row>
         <div class="text-center">
           <v-pagination v-model="page" :length="15" :total-visible="7"></v-pagination>
@@ -26,8 +25,6 @@
 import Hero from "@/components/Hero";
 import Menu from "@/components/Menu";
 import Card from "@/components/Card";
-
-
 export default {
   name: 'Shop',
   components: {
