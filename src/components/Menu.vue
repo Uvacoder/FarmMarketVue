@@ -9,7 +9,7 @@
               <v-list-item-title align="center" class="subSubHeader">PRODUCTS</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-divider></v-divider>
+
           <v-list dense rounded>
             <v-list-item v-for="item in categories" :key="item.id">
               <v-list-item-icon>

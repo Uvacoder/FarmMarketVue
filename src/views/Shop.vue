@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <Hero/>
-    <v-toolbar-title class="subHeader">SHOP</v-toolbar-title>
+    <v-toolbar-title class="subHeader text-center">SHOP</v-toolbar-title>
     <div class="mainBlock">
       <v-container>
         <v-row>
