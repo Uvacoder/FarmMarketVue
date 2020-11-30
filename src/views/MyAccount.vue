@@ -145,11 +145,7 @@ export default {
   data: () => ({
     products : [],
     categories: [],
-    categoryId: 0,
-    items: [
-      { title: 'My Products', icon: 'mdi-view-dashboard' },
-      { title: 'Account', icon: 'mdi-account-box' },
-    ],
+    categoryId: 0
   }),
 
   methods: {
