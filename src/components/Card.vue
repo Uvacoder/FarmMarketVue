@@ -4,9 +4,10 @@
 
     <div class="v-main__wrap">
       <div class="container">
-        <div class="row">
+        <div class="row ">
           <v-col cols="4" v-for="item in products" :key="item.id">
-            <v-card class="card">
+            <div class="card">
+            <v-card >
               <v-img height="100" v-bind:src="item.src"></v-img>
               <v-card-title class="card-title">{{ item.productName }}</v-card-title>
               <v-card-text class="cardText">
@@ -30,6 +31,7 @@
                 </v-btn>
               </v-card-actions>
             </v-card>
+            </div>
           </v-col>
         </div>
       </div>
