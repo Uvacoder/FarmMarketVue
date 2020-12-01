@@ -1,5 +1,7 @@
 <template>
   <v-main>
+    <Hero/>
+    <v-toolbar-title class="subHeader text-center">ADD NEW PRODUCT</v-toolbar-title>
     <v-row justify="center">
       <v-col
           cols="12"
@@ -94,6 +96,8 @@
 
 <script>
 
+import Hero from "@/components/Hero";
+
 let addProductFunc = function () {
   let url = "http://localhost:8090/newProduct";
   this.$http.post(url, this.product)
@@ -110,6 +114,10 @@ let showResponse = function (){
 
 export default {
   name: 'NewProduct',
+
+  components: {
+    Hero
+  },
 
   data: () => ({
     errorMessages: '',
