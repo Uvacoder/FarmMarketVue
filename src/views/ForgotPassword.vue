@@ -1,13 +1,7 @@
 <template>
   <v-main>
     <Hero/>
-    <div class="block">
-      <v-container>
-        <v-row class="fill-height" align="end" justify="center">
-          <h2>Forgot password?</h2>
-        </v-row>
-      </v-container>
-    </div>
+    <v-toolbar-title class="subHeader text-center">CHANGE PASSWORD</v-toolbar-title>
     <div class="block">
       <v-container>
         <v-form ref="form" v-model="valid">

@@ -1,15 +1,10 @@
 <template>
-<v-main>
+  <v-main>
     <Hero/>
-  <v-toolbar-title class="subHeader text-center">CREATE ACCOUNT</v-toolbar-title>
+    <v-toolbar-title class="subHeader text-center">CREATE ACCOUNT</v-toolbar-title>
     <div class="block mainBlock">
       <v-container>
-        <v-row class="fill-height" align="end" justify="center">
-          <h2>Become a seller. Register now!</h2>
-        </v-row>
-
-        <v-form ref="form" v-model="valid" lazy-validation>
-
+        <v-form ref="form" v-model="valid">
           <v-text-field ref="SellerName" v-model="seller.name" :rules="nameRules" label="Name / for clients to appear"
                         required></v-text-field>
           <v-text-field ref="SellerEmail" v-model="seller.email" :rules="emailRules" label="E-mail"
@@ -23,31 +18,22 @@
                         @click:append="() => (value = !value)" :type="value ? 'password' : 'text'"
                         required></v-text-field>
           <v-btn :disabled="!valid" color="success" class="mr-4" @click="showTermes()">
-            General Terms and Conditions</v-btn>
+            General Terms and Conditions
+          </v-btn>
           <v-checkbox v-model="checkbox" :rules="[v => !!v || 'You must agree to continue!']"
                       label="Agree with all policies" required></v-checkbox>
-          <v-btn :disabled="!valid" color="success" class="mr-4" @click="addSeller(), reset()">
-            Submit
-          </v-btn>
-          <v-btn color="error" class="mr-4" @click="reset">
-            Reset
-          </v-btn>
-          <v-btn color="success" class="mr-4">
-            <router-link to="/forgot_password">Forgot your password?</router-link>
-          </v-btn>
+          <v-btn :disabled="!valid" color="success" class="mr-4" @click="addSeller(), reset()">Submit</v-btn>
+          <v-btn color="error" class="mr-4" @click="reset">Reset</v-btn>
         </v-form>
-
       </v-container>
     </div>
-
-
-</v-main>
+  </v-main>
 </template>
 
 <script>
 import Hero from "@/components/Hero";
 
-let showTermesFunc = function(){
+let showTermesFunc = function () {
 }
 
 let addSellerFunc = function () {
@@ -111,7 +97,7 @@ export default {
       this.$refs.form.validate()
     },
     addSeller: addSellerFunc,
-    showTermes : showTermesFunc,
+    showTermes: showTermesFunc,
     reset() {
       this.$refs.form.reset()
     },

@@ -25,6 +25,7 @@ const routes = [
     {path: '/forgot_password', component: ForgotPassword},
     {path: '/edit_account', component: EditAccount},
     {path: '/login', component: Login}
+
 ]
 
 const router = new VueRouter({
