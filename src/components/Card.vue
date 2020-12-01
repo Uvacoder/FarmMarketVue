@@ -1,25 +1,14 @@
 <template>
-
   <v-row>
-
     <div class="v-main__wrap">
       <div class="container">
         <div class="row">
           <v-col cols="3" v-for="item in products" :key="item.id">
-            <v-card outlined
-                    class="mx-auto my-12"
-            >
+            <v-card outlined class="mx-auto my-12">
               <template slot="progress">
-                <v-progress-linear
-                    color="deep-purple"
-                    height="10"
-                    indeterminate
-                ></v-progress-linear>
+                <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
               </template>
-              <v-img
-                  height="100"
-                  v-bind:src="item.src"
-              ></v-img>
+              <v-img height="100" v-bind:src="item.src"></v-img>
               <v-card-title>{{ item.productName }}</v-card-title>
               <v-card-text>
                 <div class="my-4">
@@ -29,31 +18,14 @@
                 <div class="my-4">
                   <div>{{ item.productDescription }}</div>
                 </div>
-                <v-row
-                    align="center"
-                    class="mx-0"
-                >
-                  <v-rating
-                      :value="4.5"
-                      color="amber"
-                      dense
-                      half-increments
-                      readonly
-                      size="14"
-                  ></v-rating>
-                  <div class="grey--text ml-4">
-                    4.5 (413)
-                  </div>
+                <v-row align="center" class="mx-0">
+                  <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
+                  <div class="grey--text ml-4">4.5 (413)</div>
                 </v-row>
               </v-card-text>
               <v-divider class="mx-4"></v-divider>
               <v-card-actions>
-                <v-btn
-                    color="deep-purple lighten-2"
-                    text
-                >
-                  BUY
-                </v-btn>
+                <v-btn color="deep-purple lighten-2" text>BUY</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>

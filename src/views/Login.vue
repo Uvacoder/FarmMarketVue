@@ -4,11 +4,11 @@
     <v-toolbar-title class="subHeader text-center">TO CONTINUE PLEASE LOGIN</v-toolbar-title>
     <div class="block mainBlock">
       <v-container>
-        <v-form ref="form" v-model="valid" lazy-validation>
+        <v-form ref="form" v-model="valid">
           <v-card-text>
-            <v-text-field v-model="userName" label="Username"></v-text-field>
-            <v-text-field v-model="password" label="Password"></v-text-field>
-            <v-btn class="mr-4" @click="login()">Sign in</v-btn>
+            <v-text-field label="Username" v-model="user.username"></v-text-field>
+            <v-text-field label="Password" v-model="user.password"></v-text-field>
+            <v-btn :disabled="!valid" class="mr-4" @click="login()">Sign in</v-btn>
             <v-btn class="mr-4">
               <router-link to="/create_account">Sign up</router-link>
             </v-btn>
@@ -35,7 +35,6 @@ let loginFunc = function () {
             router.push("/my_account");
           }
       )
-
 }
 export default {
   name: 'Login',
@@ -43,8 +42,17 @@ export default {
     Hero
   },
   data: () => ({
+    valid: true,
     user: {}
   }),
+  computed: {
+    form() {
+      return {
+        username: this.user.username,
+        password: this.user.password,
+      }
+    },
+  },
   methods: {
     login: loginFunc
   }

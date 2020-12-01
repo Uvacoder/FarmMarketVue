@@ -16,7 +16,7 @@
                         :append-icon="value ? 'mdi-eye' : 'mdi-eye-off'"
                         @click:append="() => (value = !value)" :type="value ? 'password' : 'text'"
                         required></v-text-field>
-          <v-btn :disabled="!valid" color="success" class="mr-4" @click="updatePassword()">
+          <v-btn :disabled="!valid" color="success" class="mr-4" @click="updatePassword(), reset()">
             Update my password!
           </v-btn>
         </v-form>
@@ -78,6 +78,9 @@ export default {
   methods: {
     validate() {
       this.$refs.form.validate()
+    },
+    reset() {
+      this.$refs.form.reset()
     },
     updatePassword: updatePasswordFunc
   }
