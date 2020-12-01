@@ -1,7 +1,7 @@
 <template>
     <v-main>
       <Hero/>
-      <v-toolbar-title class="subHeader text-center">MAIN</v-toolbar-title>
+<!--      <v-toolbar-title class="subHeader text-center">MAIN</v-toolbar-title>-->
       <LatestPost/>
     </v-main>
 </template>
