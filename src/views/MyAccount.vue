@@ -125,13 +125,12 @@
 
 <script>
 import Hero from "@/components/Hero";
-
-let getCategories = function () {
+let getCategories = function (){
   let url = "http://localhost:8090/category";
   this.$http.get(url)
       .then(response => this.categories = response.data)
 }
-let getProducts = function () {
+let getProducts = function (){
   let url = "http://localhost:8090/product";
   this.$http.get(url)
       .then(response => this.products = response.data)
@@ -142,19 +141,19 @@ export default {
     Hero
   },
   data: () => ({
-    products: [],
+    products : [],
     categories: [],
     categoryId: 0,
     items: [
-      {title: 'My Products', icon: 'mdi-view-dashboard'},
-      {title: 'Account', icon: 'mdi-account-box'},
+      { title: 'My Products', icon: 'mdi-view-dashboard' },
+      { title: 'Account', icon: 'mdi-account-box' },
     ],
   }),
   methods: {
     getCategoriesFunc: getCategories,
     getProductsFunc: getProducts
   },
-  created: function () {
+  created: function (){
     this.getCategoriesFunc(),
         this.getProductsFunc()
   }
