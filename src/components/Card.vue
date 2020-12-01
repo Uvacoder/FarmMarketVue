@@ -5,54 +5,28 @@
     <div class="v-main__wrap">
       <div class="container">
         <div class="row">
-          <v-col cols="3" v-for="item in products" :key="item.id">
-            <v-card outlined
-                    class="mx-auto my-12"
-            >
-              <template slot="progress">
-                <v-progress-linear
-                    color="deep-purple"
-                    height="10"
-                    indeterminate
-                ></v-progress-linear>
-              </template>
-              <v-img
-                  height="100"
-                  v-bind:src="item.src"
-              ></v-img>
-              <v-card-title>{{ item.productName }}</v-card-title>
-              <v-card-text>
-                <div class="my-4">
-                  <div>$ {{ item.price }}</div>
-                  <div>Amount: {{ item.amount }}</div>
-                </div>
-                <div class="my-4">
+          <v-col cols="4" v-for="item in products" :key="item.id">
+            <v-card class="card">
+              <v-img height="100" v-bind:src="item.src"></v-img>
+              <v-card-title class="card-title">{{ item.productName }}</v-card-title>
+              <v-card-text class="cardText">
+                <div class="my-0">
                   <div>{{ item.productDescription }}</div>
                 </div>
-                <v-row
-                    align="center"
-                    class="mx-0"
-                >
-                  <v-rating
-                      :value="4.5"
-                      color="amber"
-                      dense
-                      half-increments
-                      readonly
-                      size="14"
-                  ></v-rating>
-                  <div class="grey--text ml-4">
-                    4.5 (413)
-                  </div>
-                </v-row>
               </v-card-text>
+              <div class="price">$ {{ item.price }}</div>
               <v-divider class="mx-4"></v-divider>
               <v-card-actions>
-                <v-btn
-                    color="deep-purple lighten-2"
-                    text
-                >
-                  BUY
+                <v-btn text>BUY</v-btn>
+                <v-spacer></v-spacer>
+                <v-btn icon>
+                  <v-icon>mdi-heart</v-icon>
+                </v-btn>
+                <v-btn icon>
+                  <v-icon>mdi-bookmark</v-icon>
+                </v-btn>
+                <v-btn icon>
+                  <v-icon>mdi-share-variant</v-icon>
                 </v-btn>
               </v-card-actions>
             </v-card>
@@ -60,6 +34,7 @@
         </div>
       </div>
     </div>
+
   </v-row>
 </template>
 <script>
