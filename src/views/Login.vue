@@ -7,7 +7,9 @@
         <v-form ref="form" v-model="valid">
           <v-card-text>
             <v-text-field label="Username" v-model="user.username"></v-text-field>
-            <v-text-field label="Password" v-model="user.password"></v-text-field>
+            <v-text-field label="Password" :append-icon="value ? 'mdi-eye' : 'mdi-eye-off'"
+                          @click:append="() => (value = !value)" :type="value ? 'password' : 'text'"
+                          required v-model="user.password"></v-text-field>
             <v-btn :disabled="!valid" class="mr-4" @click="login()">Sign in</v-btn>
             <v-btn class="mr-4">
               <router-link to="/create_account">Sign up</router-link>
@@ -36,6 +38,7 @@ let loginFunc = function () {
           }
       )
 }
+
 export default {
   name: 'Login',
   components: {
@@ -43,6 +46,7 @@ export default {
   },
   data: () => ({
     valid: true,
+    value: true,
     user: {}
   }),
   computed: {

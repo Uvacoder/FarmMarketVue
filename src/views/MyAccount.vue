@@ -34,9 +34,7 @@
 
                 <template v-slot:append>
                   <div class="pa-2">
-                    <v-btn block>
-                      Logout
-                    </v-btn>
+                    <v-btn block @click = "logout()">Logout</v-btn>
                   </div>
                 </template>
               </v-navigation-drawer>
@@ -215,6 +213,7 @@
 
 <script>
 import Hero from "@/components/Hero";
+import router from "@/router";
 
 let getCategories = function () {
   let url = "http://localhost:8090/category";
@@ -240,11 +239,15 @@ let addProductFunc = function () {
       .then(response => alert(response.data.message))
 }
 
-
 let showResponse = function () {
   let url = "http://localhost:8090/category";
   this.$http.get(url)
       .then(response => this.result = response.data)
+}
+let logoutFunc = function (){
+  localStorage.removeItem('user-token')
+  router.push("/login");
+  location.reload();
 }
 
 export default {
@@ -275,6 +278,7 @@ export default {
     updateProductFunc: updateProduct,
     addProduct: addProductFunc,
     showResponse: showResponse,
+    logout: logoutFunc,
     resetForm() {
       this.errorMessages = []
       this.formHasErrors = false
