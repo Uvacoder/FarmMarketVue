@@ -17,7 +17,6 @@
         </div>
       </v-container>
     </div>
-
   </v-main>
 </template>
 
@@ -25,6 +24,7 @@
 import Hero from "@/components/Hero";
 import Menu from "@/components/Menu";
 import Card from "@/components/Card";
+
 export default {
   name: 'Shop',
   components: {

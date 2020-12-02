@@ -1,7 +1,5 @@
 <template>
-
   <v-row>
-
     <div class="v-main__wrap">
       <div class="container">
         <div class="row ">
@@ -29,6 +27,7 @@
                 <v-btn icon>
                   <v-icon>mdi-share-variant</v-icon>
                 </v-btn>
+
               </v-card-actions>
             </v-card>
             </div>
