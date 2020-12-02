@@ -124,7 +124,8 @@
             </v-dialog>
           </v-row>
           <v-row>
-            <v-btn :disabled="!valid" color="blue darken-1" text class="mr-4" @click="addSeller(), reset()">Submit</v-btn>
+            <v-btn :disabled="!valid" color="blue darken-1" text class="mr-4" @click="addSeller(), reset()">Submit
+            </v-btn>
             <v-btn color="error" class="mr-4" @click="reset()">Reset</v-btn>
           </v-row>
         </v-form>
@@ -181,7 +182,7 @@ export default {
 
     seller: {},
     checkbox: false,
-    // }),
+    /*
     computed: {
       form() {
         return {
@@ -191,8 +192,8 @@ export default {
           sellerPassword: this.seller.Passwoed,
           sellerPhone: this.seller.Phone,
         }
-      }
-    },
+      },
+    }*/
   }),
 
   methods: {
@@ -203,9 +204,8 @@ export default {
     reset() {
       this.$refs.form.reset()
     },
-  }
+  },
 }
-
 </script>
 
 
