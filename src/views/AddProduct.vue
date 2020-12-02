@@ -21,7 +21,7 @@
                 label="Category"
                 required
             ></v-autocomplete>
-            {{categoryId}}
+            {{ categoryId }}
             <v-text-field
                 ref="productName"
                 v-model="product.productName"
@@ -105,7 +105,7 @@ let addProductFunc = function () {
 }
 
 
-let showResponse = function (){
+let showResponse = function () {
   let url = "http://localhost:8090/category";
   this.$http.get(url)
       .then(response => this.result = response.data)
@@ -148,7 +148,7 @@ export default {
   methods: {
     addProduct: addProductFunc,
 
-    showResponse : showResponse,
+    showResponse: showResponse,
 
     resetForm() {
       this.errorMessages = []
@@ -169,7 +169,7 @@ export default {
     },
   },
 
-  created: function (){
+  created: function () {
     this.showResponse()
   }
 }

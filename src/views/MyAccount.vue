@@ -45,14 +45,102 @@
 
           <div class="col col-9">
             <div class="mx-4 button">
-              <v-btn x-large color="success" dark>
-                <router-link to="/add_product">Add new Product</router-link>
-              </v-btn>
+              <v-dialog v-model="dialog2" width="600px">
+                <template v-slot:activator="{ on, /*attrs*/ }">
+                  <v-btn x-large color="success" dark v-on="on">Add new product</v-btn>
+                </template>
+                <v-card>
+                  <v-card-title>
+                    <span class="headline">Add new Product</span>
+                  </v-card-title>
+                  <v-card-text>
+                    <v-autocomplete
+                        ref="category"
+                        :rules="[() => !!result || 'This field is required']"
+                        :items="result"
+                        v-model="product.categoryId"
+                        item-text="categoryName"
+                        item-value="id"
+                        label="Category"
+                        required
+                    ></v-autocomplete>
+                    {{ categoryId }}
+                    <v-text-field
+                        ref="productName"
+                        v-model="product.productName"
+                        :rules="[() => !!product.productName || 'This field is required']"
+                        :error-messages="errorMessages"
+                        label="Product Name"
+                        required
+                    ></v-text-field>
+                    <v-text-field
+                        ref="description"
+                        v-model="product.productDescription"
+                        :rules="[
+              () => !!product.productDescription || 'This field is required',
+              () => !!product.productDescription && product.productDescription.length <= 100 || 'Description must be less than 100 characters',
+            ]"
+                        label="Product description"
+                        counter="100"
+                        required
+                    ></v-text-field>
+                    <v-text-field
+                        ref="price"
+                        v-model="product.price"
+                        label="Price"
+                        prefix="$"
+                    ></v-text-field>
+                    <v-text-field
+                        ref="amount"
+                        v-model="product.amount"
+                        :rules="[() => !!product.amount || 'This field is required']"
+                        label="Amount/Quantity"
+                        required
+                    ></v-text-field>
+                  </v-card-text>
+                  <v-divider class="mt-12"></v-divider>
+                  <v-card-actions>
+                    <v-btn text @click="dialog2=false">
+                      Cancel
+                    </v-btn>
+                    <v-spacer></v-spacer>
+                    <v-slide-x-reverse-transition>
+                      <v-tooltip
+                          v-if="formHasErrors"
+                          left
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-btn
+                              icon
+                              class="my-0"
+                              v-bind="attrs"
+                              @click="resetForm"
+                              v-on="on"
+                          >
+                            <v-icon>mdi-refresh</v-icon>
+                          </v-btn>
+                        </template>
+                        <span>Refresh form</span>
+                      </v-tooltip>
+                    </v-slide-x-reverse-transition>
+                    <v-btn
+                        color="success"
+                        dark
+                        @click="add, addProduct()"
+                    >
+                      Add Product
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
             </div>
             <div class="container">
               <div class="row">
                 <v-col cols="3" v-for="item in products" :key="item.id">
-                  <v-card outlined class="mx-auto my-12">
+                  <v-hover
+                      v-slot:default="{ hover }"
+                  >
+                  <v-card outlined class="mx-auto my-12" :elevation="hover ? 16 : 1">
                     <template slot="progress">
                       <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
                     </template>
@@ -114,6 +202,7 @@
                       </v-dialog>
                     </v-card-actions>
                   </v-card>
+                  </v-hover>
                 </v-col>
               </div>
             </div>
@@ -145,6 +234,18 @@ let updateProduct = function () {
       .then(response => alert(response.data.message))
       .catch(result => alert(result.response.data.message))
 }
+let addProductFunc = function () {
+  let url = "http://localhost:8090/newProduct";
+  this.$http.post(url, this.product)
+      .then(response => alert(response.data.message))
+}
+
+
+let showResponse = function () {
+  let url = "http://localhost:8090/category";
+  this.$http.get(url)
+      .then(response => this.result = response.data)
+}
 
 export default {
   name: 'MyAccount',
@@ -159,16 +260,51 @@ export default {
       {title: 'My Products', icon: 'mdi-view-dashboard'},
       {title: 'Account', icon: 'mdi-account-box'},
     ],
+    errorMessages: '',
+    formHasErrors: false,
+    product: {},
+    result: [],
+    dialog: false,
+    dialog2: false
+
   }),
+
   methods: {
     getCategoriesFunc: getCategories,
     getProductsFunc: getProducts,
-    updateProductFunc: updateProduct
+    updateProductFunc: updateProduct,
+    addProduct: addProductFunc,
+    showResponse: showResponse,
+    resetForm() {
+      this.errorMessages = []
+      this.formHasErrors = false
+
+      Object.keys(this.form).forEach(f => {
+        this.$refs[f].reset()
+      })
+    },
+    add() {
+      this.formHasErrors = false
+
+      Object.keys(this.form).forEach(f => {
+        if (!this.form[f]) this.formHasErrors = true
+
+        this.$refs[f].validate(true)
+      })
+    },
   },
+
   created: function () {
     this.getCategoriesFunc(),
         this.getProductsFunc(),
-        this.updateProductFunc()
-  }
+        this.updateProductFunc(),
+        this.showResponse()
+  },
+
+  watch: {
+    name() {
+      this.errorMessages = ''
+    },
+  },
 }
 </script>
