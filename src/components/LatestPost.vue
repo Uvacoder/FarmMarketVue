@@ -50,21 +50,21 @@ export default {
           title: "Tomat",
           location: "Tallinn",
           description: "Hello world, my name is tomato, im red and round",
-          src: require("../assets/pictures/tomat.jpg")
+          src: require("../../public/pictures/tomat.jpg")
         },
         {
           id: 2,
           title: "Apple",
           location: "Tartu",
           description: "Hello world, my name is apple, im yellow",
-          src: require("../assets/pictures/apple.jpg")
+          src: require("../../public/pictures/apple.jpg")
         },
         {
           id: 3,
           title: "Strawberry",
           location: "Narva",
           description: "Hello world, my name is strawberry, im red",
-          src: require("../assets/pictures/strawberry.jpg")
+          src: require("../../public/pictures/strawberry.jpg")
         }
       ],
     };
