@@ -159,6 +159,7 @@ export default {
       {title: 'My Products', icon: 'mdi-view-dashboard'},
       {title: 'Account', icon: 'mdi-account-box'},
     ],
+    dialog: false
   }),
   methods: {
     getCategoriesFunc: getCategories,
