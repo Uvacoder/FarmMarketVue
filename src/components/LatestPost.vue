@@ -62,8 +62,35 @@ let showLatestFunc = function () {
 
 export default {
   name: 'LatestPost',
-  comments: {
-    // Hero
+
+
+  data() {
+    return {
+      items: [
+        {
+          id: 1,
+          title: "Tomat",
+          location: "Tallinn",
+          description: "Hello world, my name is tomato, im red and round",
+          src: require("../../public/pictures/tomat.jpg")
+        },
+        {
+          id: 2,
+          title: "Apple",
+          location: "Tartu",
+          description: "Hello world, my name is apple, im yellow",
+          src: require("../../public/pictures/apple.jpg")
+        },
+        {
+          id: 3,
+          title: "Strawberry",
+          location: "Narva",
+          description: "Hello world, my name is strawberry, im red",
+          src: require("../../public/pictures/strawberry.jpg")
+        }
+      ],
+    };
+
   },
   data: () => ({
     products: [],
