@@ -8,7 +8,7 @@
           <v-col cols="4" v-for="item in products" :key="item.id">
             <div class="card">
             <v-card >
-              <v-img height="100" v-bind:src="item.src"></v-img>
+              <v-img height="100" src="/pictures/apple.jpg"></v-img>
               <v-card-title class="card-title">{{ item.productName }}</v-card-title>
               <v-card-text class="cardText">
                 <div class="my-0">
@@ -46,17 +46,35 @@ let getAllProducts = function () {
   this.$http.get(url)
       .then(response => this.products = response.data)
 }
+let getLatestProducts = function () {
+  let url = "http://localhost:8090/getLatestProducts";
+  this.$http.get(url)
+      .then(response => this.products = response.data)
+}
+let getProducts = function (){
+  if(this.query == 'All'){
+    this.getAllProducts()
+  }
+  if (this.query == 'Latest'){
+    this.getLatestProducts()
+  }
+}
 export default {
   name: 'Card',
   data: () => ({
     products: [],
     productId: 0,
   }),
+  props: {
+    query: String
+  },
   methods: {
-    getAllProductsFunc: getAllProducts,
+    getProductsFunc: getProducts,
+    getAllProducts,
+    getLatestProducts
   },
   created: function () {
-    this.getAllProductsFunc()
+    this.getProductsFunc()
   }
 
 }

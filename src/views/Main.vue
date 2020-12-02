@@ -9,7 +9,7 @@
             <Menu/>
           </div>
           <div class="col-8">
-            <CardWithLatestProducts/>
+            <Card query="Latest"/>
           </div>
         </v-row>
       </v-container>
@@ -20,14 +20,14 @@
 
 <script>
 import Hero from "@/components/Hero";
-import CardWithLatestProducts from "@/components/CardWithLatestProducts";
+import Card from "@/components/Card";
 import Menu from "@/components/Menu";
 
   export default {
     name: 'Main',
 
     components: {
-      CardWithLatestProducts,
+      Card,
       Hero,
       Menu,
     },
