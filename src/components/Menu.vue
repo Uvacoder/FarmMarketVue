@@ -1,14 +1,14 @@
 <template>
-  <div class="menu">
-      <v-col class="menu" >
+      <v-col  >
+        <div class="menu">
         <v-card outlined elevation="2" width="200">
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title align="center" class="subSubHeader">PRODUCTS</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list dense rounded>
-            <v-list-item v-for="item in categories" :key="item.id">
+          <v-list dense nav>
+            <v-list-item v-for="item in categories" :key="item.id" link>
               <v-list-item-icon>
                 <v-icon>{{ item.categoryIcon }}</v-icon>
               </v-list-item-icon>
@@ -18,12 +18,11 @@
             </v-list-item>
           </v-list>
         </v-card>
+        </div>
       </v-col>
-  </div>
 </template>
 
 <script>
-
 let getAllCategories = function () {
   let url = "http://localhost:8090/getAllCategories";
   this.$http.get(url)
@@ -41,6 +40,5 @@ export default {
   created: function () {
     this.getCategoriesFunc()
   }
-
 }
 </script>
