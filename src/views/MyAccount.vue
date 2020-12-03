@@ -263,13 +263,13 @@ export default {
       {title: 'My Products', icon: 'mdi-view-dashboard'},
       {title: 'Account', icon: 'mdi-account-box'},
     ],
+
     errorMessages: '',
     formHasErrors: false,
     product: {},
     result: [],
     dialog: false,
     dialog2: false
-
   }),
 
   methods: {
