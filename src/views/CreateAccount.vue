@@ -22,7 +22,7 @@
           <v-row>
             <v-dialog v-model="dialog" width="600px">
               <template v-slot:activator="{ on, /*attrs*/ }">
-                <v-btn color="blue darken-1" text class="mr-4" v-on="on">Website Terms and Conditions</v-btn>
+                <v-btn class="mr-4" v-on="on">Website Terms and Conditions</v-btn>
               </template>
               <v-card>
                 <v-card-title>
@@ -124,7 +124,8 @@
             </v-dialog>
           </v-row>
           <v-row>
-            <v-btn :disabled="!valid" color="blue darken-1" text class="mr-4" @click="addSeller(), reset()">Submit
+            <v-spacer></v-spacer>
+            <v-btn :disabled="!valid" class="mr-4" @click="addSeller()">Submit
             </v-btn>
             <v-btn color="error" class="mr-4" @click="reset()">Reset</v-btn>
           </v-row>
@@ -141,7 +142,8 @@ import Hero from "@/components/Hero";
 let addSellerFunc = function () {
   let url = "http://localhost:8090/newSeller";
   this.$http.post(url, this.seller)
-      .then(response => alert(response.data.message))
+      .then(response => {alert(response.data.message)
+          this.reset()})
       .catch(result => alert(result.response.data.message))
 }
 export default {

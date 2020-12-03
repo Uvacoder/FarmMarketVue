@@ -16,7 +16,7 @@
                         :append-icon="value ? 'mdi-eye' : 'mdi-eye-off'"
                         @click:append="() => (value = !value)" :type="value ? 'password' : 'text'"
                         required></v-text-field>
-          <v-btn :disabled="!valid" color="success" class="mr-4" @click="updatePassword(), reset()">
+          <v-btn :disabled="!valid" class="mr-4" @click="updatePassword()">
             Update my password!
           </v-btn>
         </v-form>
@@ -32,7 +32,8 @@ import Hero from "@/components/Hero";
 let updatePasswordFunc = function () {
   let url = "http://localhost:8090/updateSellerPassword";
   this.$http.put(url, this.seller)
-      .then(response => alert(response.data.message))
+      .then(response => {alert(response.data.message)
+        this.reset()})
       .catch(result => alert(result.response.data.message))
 }
 export default {
