@@ -2,59 +2,13 @@
   <v-main>
     <Hero/>
     <v-toolbar-title class="subHeader text-center">MY ACCOUNT</v-toolbar-title>
-    <div class="block latestPostBlock">
+    <div class="mainBlock">
       <v-container>
         <v-row>
           <div class="col col-3">
-            <v-card
-                class="mx-auto"
-                height="300"
-                width="256"
-            >
-              <v-navigation-drawer
-                  class="deep-orange accent-5"
-                  dark
-                  permanent
-              >
-                <v-list>
-                  <v-list-item link color="white">
-                    <v-list-item-icon>
-                      <v-icon>mdi-view-dashboard</v-icon>
-                    </v-list-item-icon>
-
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        <router-link to="/my_account" tag="none">My Products</router-link>
-                      </v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-
-                  <v-list-item link>
-                    <v-list-item-icon>
-                      <v-icon>mdi-account-box</v-icon>
-                    </v-list-item-icon>
-
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        <router-link to="edit_account" tag="none">Edit Account</router-link>
-                      </v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list>
-
-                <template v-slot:append>
-                  <div class="pa-2">
-                    <v-btn block>
-                      Logout
-                    </v-btn>
-                  </div>
-                </template>
-              </v-navigation-drawer>
-            </v-card>
+            <MyAccountMenu/>
           </div>
-
           <div class="col col-9">
-
             <v-row no-gutters>
               <v-col md="3">
                 <div class="blue-grey--text pa-5">
@@ -240,6 +194,7 @@
 <script>
 
 import Hero from "@/components/Hero";
+import MyAccountMenu from "@/components/MyAccountMenu";
 
 let getSeller = function () {
   let url = "http://localhost:8090/getSeller";
@@ -257,6 +212,7 @@ export default {
   name: 'EditAccount',
 
   components: {
+    MyAccountMenu,
     Hero
   },
 

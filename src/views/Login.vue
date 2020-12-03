@@ -31,7 +31,7 @@ let loginFunc = function () {
   this.$http.post(url, this.user)
       .then(response => {
             localStorage.setItem("user-token", response.data);
-            this.$http.defaults.headers.common['Authorization'] = "Bearer" + response.data;
+            this.$http.defaults.headers.common['Authorization'] = "Bearer " + response.data;
             router.push("/my_account");
           }
       )
