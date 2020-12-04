@@ -244,6 +244,7 @@ let showResponse = function () {
   this.$http.get(url)
       .then(response => this.result = response.data)
 }
+
 let logoutFunc = function (){
   localStorage.removeItem('user-token')
   router.push("/login");
