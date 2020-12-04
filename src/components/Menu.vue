@@ -24,7 +24,7 @@
 
 <script>
 let getAllCategories = function () {
-  let url = "http://localhost:8090/getAllCategories";
+  let url = "http://localhost:8090/findAllCategories";
   this.$http.get(url)
       .then(response => this.categories = response.data)
 }

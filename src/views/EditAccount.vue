@@ -12,14 +12,12 @@
               <AddNewProductBtn/>
             </div>
           </v-col>
-
+          
           <div class="col-8">
-
+          
             <v-row no-gutters>
               <v-col md="3">
-                <div class="blue-grey--text pa-5">
-                  Name:
-                </div>
+                <div class="blue-grey--text pa-5">Name:</div>
               </v-col>
               <v-col md="7">
                 <v-text-field label="Name" single-line v-model="seller.name"></v-text-field>
@@ -28,21 +26,17 @@
 
             <v-row no-gutters>
               <v-col md="3">
-                <div class="blue-grey--text pa-5">
-                  Email:
-                </div>
+                <div class="blue-grey--text pa-5">Email:</div>
               </v-col>
               <v-col md="7">
                 <v-text-field label="Email" single-line v-model="seller.email">
                 </v-text-field>
               </v-col>
             </v-row>
+            
             <v-row no-gutters>
-
               <v-col md="3">
-                <div class="blue-grey--text pa-5">
-                  Personal information:
-                </div>
+                <div class="blue-grey--text pa-5">Personal information:</div>
               </v-col>
               <v-col md="7">
                 <v-text-field label="Personal Information" single-line v-model="seller.personalInformation">
@@ -52,9 +46,7 @@
 
             <v-row no-gutters>
               <v-col md="3">
-                <div class="blue-grey--text pa-5">
-                  Address:
-                </div>
+                <div class="blue-grey--text pa-5">Address:</div>
               </v-col>
               <v-col md="7">
                 <v-text-field label="Address" single-line v-model="seller.address">
@@ -64,15 +56,14 @@
 
             <v-row no-gutters>
               <v-col md="3">
-                <div class="blue-grey--text pa-5">
-                  Phone:
-                </div>
+                <div class="blue-grey--text pa-5">Phone:</div>
               </v-col>
               <v-col md="7">
                 <v-text-field label="Phone" single-line v-model="seller.phone">
                 </v-text-field>
               </v-col>
             </v-row>
+            
           </div>
         </v-row>
     </div>

@@ -34,7 +34,6 @@ let getProducts = function () {
 
 }
 
-
 export default {
   name: 'MyAccount',
   components: {
