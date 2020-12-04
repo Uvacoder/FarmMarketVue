@@ -1,8 +1,8 @@
 <template>
-  <div class="mx-4 button">
+  <div>
     <v-dialog v-model="dialog2" width="600px">
       <template v-slot:activator="{ on, /*attrs*/ }">
-        <v-btn x-large color="success" dark v-on="on">Add new product</v-btn>
+        <v-btn height="50" width="200" color="success" dark v-on="on">Add new product</v-btn>
       </template>
       <v-card>
         <v-card-title>
@@ -101,7 +101,8 @@ let getCategories = function () {
 let addProductFunc = function () {
   let url = "http://localhost:8090/newProduct";
   this.$http.post(url, this.product)
-      .then(response => alert(response.data.message))
+      .then(response => alert(response.data.message));
+  location.reload();
 }
 export default {
   name: "AddNewProductBtn",

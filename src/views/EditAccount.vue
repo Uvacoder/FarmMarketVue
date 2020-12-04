@@ -3,12 +3,18 @@
     <Hero/>
     <v-toolbar-title class="subHeader text-center">MY ACCOUNT</v-toolbar-title>
     <div class="mainBlock">
-      <v-container>
         <v-row>
-          <div class="col col-3">
-            <MyAccountMenu/>
-          </div>
-          <div class="col col-9">
+          <v-col class="col-3">
+            <div class="mb-5 ml-8 mt-3">
+              <MyAccountMenu/>
+            </div>
+            <div class="ml-8">
+              <AddNewProductBtn/>
+            </div>
+          </v-col>
+
+          <div class="col-8">
+
             <v-row no-gutters>
               <v-col md="3">
                 <div class="blue-grey--text pa-5">
@@ -20,14 +26,7 @@
               </v-col>
               <v-col md="2">
                 <div class="pa-3">
-                    <v-btn
-                      text
-                      medium
-                      color="primary"
-                      v-on:click="changeNameFunc"
-                  >
-                    UPDATE
-                  </v-btn>
+                    <v-btn text medium color="primary" v-on:click="changeNameFunc">UPDATE</v-btn>
                 </div>
               </v-col>
             </v-row>
@@ -39,100 +38,37 @@
                 </div>
               </v-col>
               <v-col md="7">
-                <v-text-field
-                    label="Email"
-                    single-line
-                    v-model="seller.email"
-                ></v-text-field>
+                <v-text-field label="Email" single-line v-model="seller.email">
+                </v-text-field>
               </v-col>
               <v-col md="2">
                 <div class="pa-3">
-                  <v-btn
-                      text
-                      medium
-                      color="primary"
-                  >
+                  <v-btn text medium color="primary" v-on:click="changeEmailFunc">
                     UPDATE
                   </v-btn>
                 </div>
               </v-col>
             </v-row>
+            <v-row no-gutters>
 
-            <v-row no-gutters>
-              <v-col md="3">
-                <div class="blue-grey--text pa-5">
-                  Username:
-                </div>
-              </v-col>
-              <v-col md="7">
-                <v-text-field
-                    label="Username"
-                    single-line
-                    v-model="seller.username"
-                ></v-text-field>
-              </v-col>
-              <v-col md="2">
-                <div class="pa-3">
-                  <v-btn
-                      text
-                      medium
-                      color="primary"
-                  >
-                    UPDATE
-                  </v-btn>
-                </div>
-              </v-col>
-            </v-row>
-            <v-row no-gutters>
-              <v-col md="3">
-                <div class="blue-grey--text pa-5">
-                  Password:
-                </div>
-              </v-col>
-              <v-col md="7">
-                <v-text-field
-                    label="Password"
-                    single-line
-                    v-model="seller.password"
-                ></v-text-field>
-              </v-col>
-              <v-col md="2">
-                <div class="pa-3">
-                  <v-btn
-                      text
-                      medium
-                      color="primary"
-                  >
-                    UPDATE
-                  </v-btn>
-                </div>
-              </v-col>
-            </v-row>
-            <v-row no-gutters>
               <v-col md="3">
                 <div class="blue-grey--text pa-5">
                   Personal information:
                 </div>
               </v-col>
               <v-col md="7">
-                <v-text-field
-                    label="Personal Information"
-                    single-line
-                    v-model="seller.personalInformation"
-                ></v-text-field>
+                <v-text-field label="Personal Information" single-line v-model="seller.personalInformation">
+                </v-text-field>
               </v-col>
               <v-col md="2">
                 <div class="pa-3">
-                  <v-btn
-                      text
-                      medium
-                      color="primary"
-                  >
+                  <v-btn text medium color="primary" v-on:click="changePersonalInformationFunc">
                     UPDATE
                   </v-btn>
                 </div>
               </v-col>
             </v-row>
+
             <v-row no-gutters>
               <v-col md="3">
                 <div class="blue-grey--text pa-5">
@@ -140,24 +76,18 @@
                 </div>
               </v-col>
               <v-col md="7">
-                <v-text-field
-                    label="Address"
-                    single-line
-                    v-model="seller.address"
-                ></v-text-field>
+                <v-text-field label="Address" single-line v-model="seller.address">
+                </v-text-field>
               </v-col>
               <v-col md="2">
                 <div class="pa-3">
-                  <v-btn
-                      text
-                      medium
-                      color="primary"
-                  >
+                  <v-btn text medium color="primary" v-on:click="changeAddressFunc">
                     UPDATE
                   </v-btn>
                 </div>
               </v-col>
             </v-row>
+
             <v-row no-gutters>
               <v-col md="3">
                 <div class="blue-grey--text pa-5">
@@ -165,19 +95,12 @@
                 </div>
               </v-col>
               <v-col md="7">
-                <v-text-field
-                    label="Phone"
-                    single-line
-                    v-model="seller.phone"
-                ></v-text-field>
+                <v-text-field label="Phone" single-line v-model="seller.phone">
+                </v-text-field>
               </v-col>
               <v-col md="2">
                 <div class="pa-3">
-                  <v-btn
-                      text
-                      medium
-                      color="primary"
-                  >
+                  <v-btn text medium color="primary" v-on:click="changePhoneFunc">
                     UPDATE
                   </v-btn>
                 </div>
@@ -185,9 +108,7 @@
             </v-row>
           </div>
         </v-row>
-      </v-container>
     </div>
-    {{seller}}
   </v-main>
 </template>
 
@@ -195,6 +116,7 @@
 
 import Hero from "@/components/Hero";
 import MyAccountMenu from "@/components/MyAccountMenu";
+import AddNewProductBtn from "@/components/AddNewProductBtn";
 
 let getSeller = function () {
   let url = "http://localhost:8090/getSeller";
@@ -205,13 +127,38 @@ let getSeller = function () {
 let changeName = function (){
   let url = "http://localhost:8090/updateSellerName";
   this.$http.put(url, this.seller)
+      .then(response => alert(response.data.message))
 }
 
+let changeEmail = function () {
+  let url = "http://localhost:8090/updateSellerEmail";
+  this.$http.put(url, this.seller)
+      .then(response => alert(response.data.message))
+}
+
+let changeAddress = function () {
+  let url = "http://localhost:8090/updateSellerAddress";
+  this.$http.put(url, this.seller)
+      .then(response => alert(response.data.message))
+}
+
+let changePhone = function () {
+  let url = "http://localhost:8090/updateSellerPhone";
+  this.$http.put(url, this.seller)
+      .then(response => alert(response.data.message))
+}
+
+let changePersonalInformation = function () {
+  let url = "http://localhost:8090/updateSellerPersonalInformation";
+  this.$http.put(url, this.seller)
+      .then(response => alert(response.data.message))
+}
 
 export default {
   name: 'EditAccount',
 
   components: {
+    AddNewProductBtn,
     MyAccountMenu,
     Hero
   },
@@ -223,6 +170,10 @@ export default {
   methods: {
     getSellerFunc: getSeller,
     changeNameFunc: changeName,
+    changeEmailFunc: changeEmail,
+    changeAddressFunc: changeAddress,
+    changePhoneFunc: changePhone,
+    changePersonalInformationFunc: changePersonalInformation
 
   },
   created: function () {

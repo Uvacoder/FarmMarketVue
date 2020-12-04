@@ -7,7 +7,6 @@ import CreateAccount from "@/views/CreateAccount";
 import MyAccount from "@/views/MyAccount";
 import NotFound from "@/views/NotFound";
 import Shop from "@/views/Shop";
-import AddProduct from "@/views/AddProduct";
 import ForgotPassword from "@/views/ForgotPassword";
 import EditAccount from "@/views/EditAccount";
 import Login from "@/views/Login";
@@ -21,7 +20,6 @@ const routes = [
     {path: '/my_account', component: MyAccount},
     {path: '/shop', component: Shop},
     {path: '*', component: NotFound},
-    {path: '/add_product', component: AddProduct},
     {path: '/forgot_password', component: ForgotPassword},
     {path: '/edit_account', component: EditAccount},
     {path: '/login', component: Login}

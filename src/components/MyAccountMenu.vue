@@ -1,12 +1,19 @@
 <template>
-  <v-card class="mx-auto" height="300" width="200">
+  <v-card height="300" width="200">
     <v-navigation-drawer class="deep-orange accent-5" dark permanent>
       <v-list>
-        <v-list-item link>
+        <v-list-item>
           <v-list-item-icon>
-            <v-icon>mdi-view-dashboard</v-icon>
+            <v-icon>mdi-account-box</v-icon>
           </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>
+              {{seller.username }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
+        <v-list-item link>
           <v-list-item-content>
             <v-list-item-title>
               <router-link to="my_account" tag="none">My Products</router-link>
@@ -15,16 +22,13 @@
         </v-list-item>
 
         <v-list-item link>
-          <v-list-item-icon>
-            <v-icon>mdi-account-box</v-icon>
-          </v-list-item-icon>
-
           <v-list-item-content>
             <v-list-item-title>
               <router-link to="edit_account" tag="none">Edit Account</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
       </v-list>
 
       <template v-slot:append>
@@ -47,12 +51,24 @@ let logout = function (){
   router.push("/login");
   location.reload();
 }
+let getSeller = function () {
+  let url = "http://localhost:8090/getSeller";
+  this.$http.get(url)
+      .then(response => this.seller = response.data)
+}
 
 export default {
+  data: () => ({
+    seller: {}
+  }),
   name: "MyAccountMenu",
   methods: {
-    logoutFunc : logout
-  }
+    logoutFunc : logout,
+    getSellerFunc: getSeller
+  },
+  created: function () {
+    this.getSellerFunc()
+  },
 }
 </script>
 
