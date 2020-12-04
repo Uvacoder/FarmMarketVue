@@ -44,9 +44,7 @@
 
                 <template v-slot:append>
                   <div class="pa-2">
-                    <v-btn block>
-                      Logout
-                    </v-btn>
+                    <v-btn block>Logout</v-btn>
                   </div>
                 </template>
               </v-navigation-drawer>
@@ -54,52 +52,30 @@
           </div>
 
           <div class="col col-9">
-
             <v-row no-gutters>
               <v-col md="3">
-                <div class="blue-grey--text pa-5">
-                  Name:
-                </div>
+                <div class="blue-grey--text pa-5">Name:</div>
               </v-col>
               <v-col md="7">
                 <v-text-field label="Name" single-line v-model="seller.name"></v-text-field>
               </v-col>
               <v-col md="2">
                 <div class="pa-3">
-                    <v-btn
-                      text
-                      medium
-                      color="primary"
-                      v-on:click="changeNameFunc"
-                  >
-                    UPDATE
-                  </v-btn>
+                    <v-btn text medium color="primary" v-on:click="changeNameFunc">UPDATE</v-btn>
                 </div>
               </v-col>
             </v-row>
 
             <v-row no-gutters>
               <v-col md="3">
-                <div class="blue-grey--text pa-5">
-                  Email:
-                </div>
+                <div class="blue-grey--text pa-5">Email:</div>
               </v-col>
               <v-col md="7">
-                <v-text-field
-                    label="Email"
-                    single-line
-                    v-model="seller.email"
-                ></v-text-field>
+                <v-text-field label="Email" single-line v-model="seller.email"></v-text-field>
               </v-col>
               <v-col md="2">
                 <div class="pa-3">
-                  <v-btn
-                      text
-                      medium
-                      color="primary"
-                  >
-                    UPDATE
-                  </v-btn>
+                  <v-btn text medium color="primary">UPDATE</v-btn>
                 </div>
               </v-col>
             </v-row>

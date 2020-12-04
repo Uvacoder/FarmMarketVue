@@ -25,16 +25,16 @@
                   </v-card-title>
                   <v-card-text>
                     <v-container>
-                      <v-row>
-                        <v-col cols="12" sm="6">
-                          <v-autocomplete :items="['Skiing', 'Ice hockey', 'Soccer']" label="Product category" multiple></v-autocomplete>
+                      <v-row><p>PRODUCT NAME{{products.productName}}</p> </v-row>
+                      <v-row> <p>PRODUCT DESCRIPTION{{products.productDescription}}</p></v-row>
+                      <v-row> <p>PRODUCT PRICE{{products.price }}</p></v-row>
+                        <v-col cols="12">
+                        <v-textarea color="teal">
+                          <template v-slot:label>
+                            <div>Your message to seller <small>(optional)</small></div>
+                          </template>
+                        </v-textarea>
                         </v-col>
-                        <v-col cols="12" sm="6" md="4">
-                          <v-text-field label="Product name" aria-required="true">{{item.productName }}</v-text-field></v-col>
-                        <v-col cols="12"><v-text-field label="Product description" required></v-text-field></v-col>
-                        <v-col cols="12" sm="6"><v-text-field label="Price" required></v-text-field></v-col>
-                        <v-col cols="12" sm="6"><v-text-field label="Amount" required></v-text-field></v-col>
-                      </v-row>
                       <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn color="blue darken-1" @click="dialog=false">Close</v-btn>
@@ -81,6 +81,9 @@ let getProducts = function (){
 }
 
 let contactSellerFunc = function (){
+ // let url = "http://localhost:8090/contactSeller";
+ // this.$http.get(url)
+   //   .then(response => this.products = response.data)
 
 }
 
@@ -88,16 +91,16 @@ let contactSellerFunc = function (){
 export default {
   name: 'Card',
   data: () => ({
+    dialog: false,
     products: [],
     productId: 0,
   }),
-  dialog: false,
   props: {
     query: String
   },
   methods: {
     getProductsFunc: getProducts,
-    contactSeller: contactSellerFunc(),
+    contactSeller: contactSellerFunc,
     getAllProducts,
     getLatestProducts
   },
