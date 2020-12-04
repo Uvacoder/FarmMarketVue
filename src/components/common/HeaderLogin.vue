@@ -8,6 +8,7 @@
 
        <v-toolbar-items>
          <Search/>
+
         <v-btn text>
           <router-link to="/">Main</router-link>
         </v-btn>
@@ -17,16 +18,8 @@
         </v-btn>
 
         <v-btn text>
-          <router-link to="/create_account">Create Account</router-link>
-        </v-btn>
-
-        <v-btn text>
           <router-link to="/my_account">My Account</router-link>
         </v-btn>
-
-         <v-btn text>
-           <router-link to="/login">Login</router-link>
-         </v-btn>
 
 
       </v-toolbar-items>
@@ -38,7 +31,7 @@
 <script>
   import Search from "@/components/Search";
   export default {
-    name: 'Header',
+    name: 'HeaderLogin',
     components: {Search},
     data: () => ({
     }),
