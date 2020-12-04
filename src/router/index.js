@@ -22,7 +22,7 @@ const routes = [
     {path: '*', component: NotFound},
     {path: '/forgot_password', component: ForgotPassword},
     {path: '/edit_account', component: EditAccount},
-    {path: '/login', component: Login}
+    {path: '/login', component: Login},
 
 
 ]

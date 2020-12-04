@@ -51,6 +51,7 @@
               label="Amount/Quantity"
               required
           ></v-text-field>
+          <Upload/>
         </v-card-text>
         <v-divider class="mt-12"></v-divider>
         <v-card-actions>
@@ -91,6 +92,7 @@
 
 <script>
 
+import Upload from "@/components/Upload";
 
 let getCategories = function () {
   let url = "http://localhost:8090/category";
@@ -102,11 +104,11 @@ let addProductFunc = function () {
   let url = "http://localhost:8090/newProduct";
   this.$http.post(url, this.product)
       .then(response => alert(response.data.message));
-  location.reload();
+  // location.reload();
 }
 export default {
   name: "AddNewProductBtn",
-
+  components: {Upload},
   data: () => ({
     categories: [],
 

@@ -8,7 +8,6 @@
 
        <v-toolbar-items>
          <Search/>
-
         <v-btn text>
           <router-link to="/">Main</router-link>
         </v-btn>
@@ -28,6 +27,7 @@
          <v-btn text>
            <router-link to="/login">Login</router-link>
          </v-btn>
+
 
       </v-toolbar-items>
     </v-toolbar>

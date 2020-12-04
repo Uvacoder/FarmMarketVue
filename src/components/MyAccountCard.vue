@@ -22,31 +22,31 @@
                       <span class="headline">Product details</span>
                     </v-card-title>
                     <v-card-text>
-                      <v-container>
-                        <v-row>
-                          <v-col cols="12" sm="6">
-                            <v-autocomplete :items="['Skiing', 'Ice hockey', 'Soccer']" label="Product category" multiple></v-autocomplete>
-                          </v-col>
-                          <v-col cols="12" sm="6" md="4">
-                            <v-text-field label="Product name" aria-required="true">{{item.productName }}
-                            </v-text-field>
-                          </v-col>
-                          <v-col cols="12">
-                            <v-text-field label="Product description" required></v-text-field>
-                          </v-col>
-                          <v-col cols="12" sm="6">
-                            <v-text-field label="Price" required></v-text-field>
-                          </v-col>
-                          <v-col cols="12" sm="6">
-                            <v-text-field label="Amount" required></v-text-field>
-                          </v-col>
-                        </v-row>
-                        <v-card-actions>
-                          <v-spacer></v-spacer>
-                          <v-btn color="blue darken-1" @click="dialog=false">Close</v-btn>
-                          <v-btn color="blue darken-1" @click="updateProductFunc()">Save</v-btn>
-                        </v-card-actions>
-                      </v-container>
+<!--                      <v-container>-->
+<!--                        <v-row>-->
+<!--                          <v-col cols="12" sm="6">-->
+<!--                            <v-autocomplete :items="['Skiing', 'Ice hockey', 'Soccer']" label="Product category" multiple></v-autocomplete>-->
+<!--                          </v-col>-->
+<!--                          <v-col cols="12" sm="6" md="4">-->
+<!--                            <v-text-field label="Product name" aria-required="true">{{item.productName }}-->
+<!--                            </v-text-field>-->
+<!--                          </v-col>-->
+<!--                          <v-col cols="12">-->
+<!--                            <v-text-field label="Product description" required></v-text-field>-->
+<!--                          </v-col>-->
+<!--                          <v-col cols="12" sm="6">-->
+<!--                            <v-text-field label="Price" required></v-text-field>-->
+<!--                          </v-col>-->
+<!--                          <v-col cols="12" sm="6">-->
+<!--                            <v-text-field label="Amount" required></v-text-field>-->
+<!--                          </v-col>-->
+<!--                        </v-row>-->
+<!--                        <v-card-actions>-->
+<!--                          <v-spacer></v-spacer>-->
+<!--                          <v-btn color="blue darken-1" @click="dialog=false">Close</v-btn>-->
+<!--                          <v-btn color="blue darken-1" @click="updateProductFunc()">Save</v-btn>-->
+<!--                        </v-card-actions>-->
+<!--                      </v-container>-->
                     </v-card-text>
                   </v-card>
                 </v-dialog>
@@ -65,12 +65,12 @@ let getProducts = function () {
 
 }
 
-let updateProduct = function () {
-  let url = "http://localhost:8090/updateProduct";
-  this.$http.post(url, this.product)
-      .then(response => alert(response.data.message))
-      .catch(result => alert(result.response.data.message))
-}
+// let updateProduct = function () {
+//   let url = "http://localhost:8090/updateProduct";
+//   this.$http.post(url, this.product)
+//       .then(response => alert(response.data.message))
+//       .catch(result => alert(result.response.data.message))
+// }
 
 export default {
   name: 'MyAccountCard',
@@ -83,7 +83,7 @@ export default {
 
   methods: {
     getProductsFunc: getProducts,
-    updateProductFunc: updateProduct,
+    // updateProductFunc: updateProduct,
     resetForm() {
       this.errorMessages = []
       this.formHasErrors = false
@@ -104,8 +104,8 @@ export default {
   },
 
   created: function () {
-    this.getProductsFunc(),
-        this.updateProductFunc()
+    this.getProductsFunc()
+        // this.updateProductFunc()
   },
 
   watch: {

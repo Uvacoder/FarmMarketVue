@@ -24,11 +24,6 @@
               <v-col md="7">
                 <v-text-field label="Name" single-line v-model="seller.name"></v-text-field>
               </v-col>
-              <v-col md="2">
-                <div class="pa-3">
-                    <v-btn text medium color="primary" v-on:click="changeNameFunc">UPDATE</v-btn>
-                </div>
-              </v-col>
             </v-row>
 
             <v-row no-gutters>
@@ -40,13 +35,6 @@
               <v-col md="7">
                 <v-text-field label="Email" single-line v-model="seller.email">
                 </v-text-field>
-              </v-col>
-              <v-col md="2">
-                <div class="pa-3">
-                  <v-btn text medium color="primary" v-on:click="changeEmailFunc">
-                    UPDATE
-                  </v-btn>
-                </div>
               </v-col>
             </v-row>
             <v-row no-gutters>
@@ -60,13 +48,6 @@
                 <v-text-field label="Personal Information" single-line v-model="seller.personalInformation">
                 </v-text-field>
               </v-col>
-              <v-col md="2">
-                <div class="pa-3">
-                  <v-btn text medium color="primary" v-on:click="changePersonalInformationFunc">
-                    UPDATE
-                  </v-btn>
-                </div>
-              </v-col>
             </v-row>
 
             <v-row no-gutters>
@@ -79,13 +60,6 @@
                 <v-text-field label="Address" single-line v-model="seller.address">
                 </v-text-field>
               </v-col>
-              <v-col md="2">
-                <div class="pa-3">
-                  <v-btn text medium color="primary" v-on:click="changeAddressFunc">
-                    UPDATE
-                  </v-btn>
-                </div>
-              </v-col>
             </v-row>
 
             <v-row no-gutters>
@@ -97,13 +71,6 @@
               <v-col md="7">
                 <v-text-field label="Phone" single-line v-model="seller.phone">
                 </v-text-field>
-              </v-col>
-              <v-col md="2">
-                <div class="pa-3">
-                  <v-btn text medium color="primary" v-on:click="changePhoneFunc">
-                    UPDATE
-                  </v-btn>
-                </div>
               </v-col>
             </v-row>
           </div>
@@ -124,32 +91,8 @@ let getSeller = function () {
       .then(response => this.seller = response.data)
 }
 
-let changeName = function (){
-  let url = "http://localhost:8090/updateSellerName";
-  this.$http.put(url, this.seller)
-      .then(response => alert(response.data.message))
-}
-
-let changeEmail = function () {
-  let url = "http://localhost:8090/updateSellerEmail";
-  this.$http.put(url, this.seller)
-      .then(response => alert(response.data.message))
-}
-
-let changeAddress = function () {
-  let url = "http://localhost:8090/updateSellerAddress";
-  this.$http.put(url, this.seller)
-      .then(response => alert(response.data.message))
-}
-
-let changePhone = function () {
-  let url = "http://localhost:8090/updateSellerPhone";
-  this.$http.put(url, this.seller)
-      .then(response => alert(response.data.message))
-}
-
-let changePersonalInformation = function () {
-  let url = "http://localhost:8090/updateSellerPersonalInformation";
+let updateSeller = function (){
+  let url = "http://localhost:8090/updateSeller";
   this.$http.put(url, this.seller)
       .then(response => alert(response.data.message))
 }
@@ -169,12 +112,7 @@ export default {
 
   methods: {
     getSellerFunc: getSeller,
-    changeNameFunc: changeName,
-    changeEmailFunc: changeEmail,
-    changeAddressFunc: changeAddress,
-    changePhoneFunc: changePhone,
-    changePersonalInformationFunc: changePersonalInformation
-
+    updateSellerFunc: updateSeller
   },
   created: function () {
     this.getSellerFunc()

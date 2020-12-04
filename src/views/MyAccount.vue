@@ -12,9 +12,9 @@
               <AddNewProductBtn/>
             </div>
           </v-col>
-
           <v-col class="col-8">
               <MyAccountCard/>
+
           </v-col>
         </v-row>
     </div>
@@ -34,13 +34,6 @@ let getProducts = function () {
 
 }
 
-let updateProduct = function () {
-  let url = "http://localhost:8090/updateProduct";
-  this.$http.post(url, this.product)
-      .then(response => alert(response.data.message))
-      .catch(result => alert(result.response.data.message))
-}
-
 
 export default {
   name: 'MyAccount',
@@ -58,7 +51,6 @@ export default {
 
   methods: {
     getProductsFunc: getProducts,
-    updateProductFunc: updateProduct,
     resetForm() {
       this.errorMessages = []
       this.formHasErrors = false
@@ -79,8 +71,7 @@ export default {
   },
 
   created: function () {
-    this.getProductsFunc(),
-        this.updateProductFunc()
+    this.getProductsFunc()
   },
 
   watch: {

@@ -2,31 +2,26 @@
   <v-card height="300" width="200">
     <v-navigation-drawer class="deep-orange accent-5" dark permanent>
       <v-list>
+
         <v-list-item>
           <v-list-item-icon>
             <v-icon>mdi-account-box</v-icon>
           </v-list-item-icon>
-          <v-list-item-content>
             <v-list-item-title>
               {{seller.username }}
             </v-list-item-title>
-          </v-list-item-content>
         </v-list-item>
 
         <v-list-item link>
-          <v-list-item-content>
-            <v-list-item-title>
-              <router-link to="my_account" tag="none">My Products</router-link>
-            </v-list-item-title>
-          </v-list-item-content>
+          <v-list-item-title>
+              <router-link to="my_account" class="myMenuBtn">My Products</router-link>
+          </v-list-item-title>
         </v-list-item>
 
         <v-list-item link>
-          <v-list-item-content>
             <v-list-item-title>
-              <router-link to="edit_account" tag="none">Edit Account</router-link>
+              <router-link to="edit_account" class="myMenuBtn">Edit Account</router-link>
             </v-list-item-title>
-          </v-list-item-content>
         </v-list-item>
 
       </v-list>

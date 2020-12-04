@@ -187,11 +187,11 @@ iframe {
   background: limegreen;
 }
 
-myMenuBtn {
-    a {
-      color: white;
-    }
+a.myMenuBtn {
+  color: $white !important;
+
 }
+
 
 .subHeader {
   margin-block: 20px;
