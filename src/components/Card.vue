@@ -81,10 +81,9 @@ let getProducts = function (){
 }
 
 let contactSellerFunc = function (){
- // let url = "http://localhost:8090/contactSeller";
- // this.$http.get(url)
-   //   .then(response => this.products = response.data)
-
+    let url = "http://localhost:8090/contactSeller";
+     this.$http.post(url)
+      .then(response => this.products = response.data)
 }
 
 
