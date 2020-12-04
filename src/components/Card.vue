@@ -6,7 +6,7 @@
           <v-col cols="4" v-for="item in products" :key="item.id">
             <div class="card">
             <v-card >
-              <v-img height="100" src="/pictures/apple.jpg"></v-img>
+              <v-img v-bind:src="item.categoryPicture" height="150" ></v-img>
               <v-card-title class="card-title">{{ item.productName }}</v-card-title>
               <v-card-text class="cardText">
                 <div class="my-0">
@@ -27,7 +27,6 @@
                 <v-btn icon>
                   <v-icon>mdi-share-variant</v-icon>
                 </v-btn>
-
               </v-card-actions>
             </v-card>
             </div>
@@ -41,7 +40,7 @@
 <script>
 
 let getAllProducts = function () {
-  let url = "http://localhost:8090/getAllProducts";
+  let url = "http://localhost:8090/findAllProducts";
   this.$http.get(url)
       .then(response => this.products = response.data)
 }
