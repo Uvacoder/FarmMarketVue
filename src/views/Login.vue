@@ -36,7 +36,7 @@ let loginFunc = function () {
             this.$http.defaults.headers.common['Authorization'] = "Bearer " + response.data;
             router.push("/my_account");
           }
-      )
+      ).catch(result => alert(result.response.data.message))
 }
 
 export default {
