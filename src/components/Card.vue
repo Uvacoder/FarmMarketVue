@@ -72,45 +72,54 @@ let getLatestProducts = function () {
   this.$http.get(url)
       .then(response => this.products = response.data)
 }
-
-let getProducts = function (searchWord) {
-  let url = "http://localhost:8090/searchProduct";
-  this.$http.get(url, {params: {searchWord}})
-      .then(response => this.products = response.data)
-}
-
-let contactSellerFunc = function () {
-  let url = "http://localhost:8090/contactSeller";
-  let request = {
-    email: this.email
+let getProducts = function () {
+  if (this.query == 'All') {
+    this.getAllProducts()
   }
-  this.$http.post(url, request)
-      .then(response => this.email = response.data)
+  if (this.query == 'Latest') {
+    this.getLatestProducts()
+  }
 }
 
-export default {
-  name: 'Card',
-  data: () => ({
-    dialog: false,
-    products: [],
-    productId: 0,
-    email: "",
-  }),
-  props: {
-    query: String
-  },
-  methods: {
-    contactSeller: contactSellerFunc,
-    getProducts: getProducts,
-    getAllProducts,
-    getLatestProducts
-  },
-  created: function () {
-    this.getProducts()
-    EventBus.$on('search', searchWord => {
-      this.getProducts(searchWord)
-    })
+  let searchFunc = function (searchWord) {
+    let url = "http://localhost:8090/searchProduct";
+    this.$http.get(url, {params: {searchWord}})
+        .then(response => this.products = response.data)
   }
 
-}
+  let contactSellerFunc = function () {
+    let url = "http://localhost:8090/contactSeller";
+    let request = {
+      email: this.email
+    }
+    this.$http.post(url, request)
+        .then(response => this.email = response.data)
+  }
+
+  export default {
+    name: 'Card',
+    data: () => ({
+      dialog: false,
+      products: [],
+      productId: 0,
+      email: "",
+    }),
+    props: {
+      query: String
+    },
+    methods: {
+      getProductsFunc: getProducts,
+      contactSeller: contactSellerFunc,
+      search: searchFunc,
+      getAllProducts,
+      getLatestProducts
+    },
+    created: function () {
+      this.search()
+      EventBus.$on('search', searchWord => {
+        this.search(searchWord)
+      })
+    }
+  }
+
 </script>
