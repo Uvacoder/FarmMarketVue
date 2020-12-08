@@ -62,26 +62,7 @@
 <script>
 import {EventBus} from './event-bus.js'
 
-let getAllProducts = function () {
-  let url = "http://localhost:8090/findAllProducts";
-  this.$http.get(url)
-      .then(response => this.products = response.data)
-}
-let getLatestProducts = function () {
-  let url = "http://localhost:8090/getLatestProducts";
-  this.$http.get(url)
-      .then(response => this.products = response.data)
-}
-let getProducts = function () {
-  if (this.query == 'All') {
-    this.getAllProducts()
-  }
-  if (this.query == 'Latest') {
-    this.getLatestProducts()
-  }
-}
-
-  let searchFunc = function (searchWord) {
+  let getProducts = function (searchWord) {
     let url = "http://localhost:8090/searchProduct";
     this.$http.get(url, {params: {searchWord}})
         .then(response => this.products = response.data)
@@ -108,16 +89,13 @@ let getProducts = function () {
       query: String
     },
     methods: {
-      getProductsFunc: getProducts,
+      getProducts: getProducts,
       contactSeller: contactSellerFunc,
-      search: searchFunc,
-      getAllProducts,
-      getLatestProducts
     },
     created: function () {
-      this.search()
+      this.getProducts()
       EventBus.$on('search', searchWord => {
-        this.search(searchWord)
+        this.getProducts(searchWord)
       })
     }
   }

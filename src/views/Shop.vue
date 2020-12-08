@@ -9,7 +9,7 @@
             <Menu/>
           </div>
           <div class="col-8">
-            <Card query="All"/>
+            <Card/>
           </div>
         </v-row>
         <div class="text-center">
