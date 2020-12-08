@@ -9,7 +9,7 @@
             <Menu/>
           </div>
           <div class="col-8">
-            <Card query="Latest"/>
+            <Card/>
           </div>
         </v-row>
       </v-container>
