@@ -15,9 +15,10 @@
               </v-card-text>
               <div class="price">$ {{ item.price }}</div>
               <v-divider class="mx-4"></v-divider>
+              <v-card-actions>
               <v-dialog v-model="dialog" persistent max-width="600px">
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="primary" dark v-bind="attrs" v-on="on">Contact seller </v-btn>
+                  <v-btn color="primary" dark v-bind="attrs" v-on="on">Contact</v-btn>
                 </template>
                 <v-card>
                   <v-card-title>
@@ -44,9 +45,7 @@
                   </v-card-text>
                 </v-card>
               </v-dialog>
-              <v-card-actions>
                 <v-spacer></v-spacer>
-
                 <v-btn icon><v-icon>mdi-heart</v-icon></v-btn>
                 <v-btn icon><v-icon>mdi-bookmark</v-icon></v-btn>
                 <v-btn icon><v-icon>mdi-share-variant</v-icon></v-btn>
