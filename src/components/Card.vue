@@ -62,16 +62,7 @@
 <script>
 import {EventBus} from './event-bus.js'
 
-let getAllProducts = function () {
-  let url = "http://localhost:8090/findAllProducts";
-  this.$http.get(url)
-      .then(response => this.products = response.data)
-}
-let getLatestProducts = function () {
-  let url = "http://localhost:8090/getLatestProducts";
-  this.$http.get(url)
-      .then(response => this.products = response.data)
-}
+
 
 let getProducts = function (searchWord) {
   let url = "http://localhost:8090/searchProduct";
@@ -102,8 +93,6 @@ export default {
   methods: {
     contactSeller: contactSellerFunc,
     getProducts: getProducts,
-    getAllProducts,
-    getLatestProducts
   },
   created: function () {
     this.getProducts()
