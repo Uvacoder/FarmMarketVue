@@ -141,7 +141,7 @@ import router from "@/router";
 
 
 let addSellerFunc = function () {
-  let url = "http://localhost:8090/newSeller";
+  let url = this.host + "/newSeller";
   this.$http.post(url, this.seller)
       .then(response => {alert(response.data.message)
         router.push("/login");})

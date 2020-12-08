@@ -95,13 +95,13 @@
 import Upload from "@/components/Upload";
 
 let getCategories = function () {
-  let url = "http://localhost:8090/category";
+  let url = this.host + "/category";
   this.$http.get(url)
       .then(response => this.categories = response.data)
 }
 
 let addProductFunc = function () {
-  let url = "http://localhost:8090/newProduct";
+  let url = this.host + "/newProduct";
   this.$http.post(url, this.product)
       .then(response => alert(response.data.message));
   // location.reload();

@@ -47,7 +47,7 @@ let logout = function (){
   location.reload();
 }
 let getSeller = function () {
-  let url = "http://localhost:8090/getSeller";
+  let url = this.host + "/getSeller";
   this.$http.get(url)
       .then(response => this.seller = response.data)
 }

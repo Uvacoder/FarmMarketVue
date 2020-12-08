@@ -70,24 +70,24 @@
 import {EventBus} from './event-bus.js'
 
 let getAllProducts = function () {
-  let url = "http://localhost:8090/findAllProducts";
+  let url = this.host + "/findAllProducts";
   this.$http.get(url)
       .then(response => this.products = response.data)
 }
 let getLatestProducts = function () {
-  let url = "http://localhost:8090/getLatestProducts";
+  let url = this.host + "/getLatestProducts";
   this.$http.get(url)
       .then(response => this.products = response.data)
 }
 
 let getProducts = function (searchWord) {
-  let url = "http://localhost:8090/searchProduct";
+  let url = this.host + "/searchProduct";
   this.$http.get(url, {params: {searchWord}})
       .then(response => this.products = response.data)
 }
 
 let contactSellerFunc = function () {
-  let url = "http://localhost:8090/contactSeller";
+  let url = this.host + "/contactSeller";
   let request = {
     email: this.email
   }
