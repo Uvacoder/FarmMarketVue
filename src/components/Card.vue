@@ -30,11 +30,11 @@
                       <v-row> <p>PRODUCT DESCRIPTION{{products.productDescription}}</p></v-row>
                       <v-row> <p>PRODUCT PRICE{{products.price }}</p></v-row>
                         <v-col cols="12">
-                        <v-textarea color="teal">
-                          <template v-slot:label>
-                            <div>Your message to seller <small>(optional)</small></div>
-                          </template>
-                        </v-textarea>
+                          <v-textarea v-model="email" color="teal">
+                            <template v-slot:label>
+                              <div>Your message to seller <small>(optional)</small></div>
+                            </template>
+                          </v-textarea>
                         </v-col>
                       <v-card-actions>
                         <v-spacer></v-spacer>
@@ -60,6 +60,7 @@
   </v-row>
 </template>
 <script>
+import {EventBus} from './event-bus.js'
 
 let getAllProducts = function () {
   let url = "http://localhost:8090/findAllProducts";
@@ -71,21 +72,21 @@ let getLatestProducts = function () {
   this.$http.get(url)
       .then(response => this.products = response.data)
 }
-let getProducts = function (){
-  if(this.query == 'All'){
-    this.getAllProducts()
-  }
-  if (this.query == 'Latest'){
-    this.getLatestProducts()
-  }
-}
 
-let contactSellerFunc = function (){
-    let url = "http://localhost:8090/contactSeller";
-     this.$http.post(url)
+let getProducts = function (searchWord) {
+  let url = "http://localhost:8090/searchProduct";
+  this.$http.get(url, {params: {searchWord}})
       .then(response => this.products = response.data)
 }
 
+let contactSellerFunc = function () {
+  let url = "http://localhost:8090/contactSeller";
+  let request = {
+    email: this.email
+  }
+  this.$http.post(url, request)
+      .then(response => this.email = response.data)
+}
 
 export default {
   name: 'Card',
@@ -93,18 +94,22 @@ export default {
     dialog: false,
     products: [],
     productId: 0,
+    email: "",
   }),
   props: {
     query: String
   },
   methods: {
-    getProductsFunc: getProducts,
     contactSeller: contactSellerFunc,
+    getProducts: getProducts,
     getAllProducts,
     getLatestProducts
   },
   created: function () {
-    this.getProductsFunc()
+    this.getProducts()
+    EventBus.$on('search', searchWord => {
+      this.getProducts(searchWord)
+    })
   }
 
 }

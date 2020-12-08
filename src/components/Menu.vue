@@ -13,7 +13,7 @@
                 <v-icon>{{ item.categoryIcon }}</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title>{{ item.categoryName }}</v-list-item-title>
+                <v-list-item-title @click="searchByCategory(item.id)">{{ item.categoryName }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list>
