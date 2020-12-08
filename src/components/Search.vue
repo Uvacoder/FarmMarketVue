@@ -8,10 +8,11 @@
 </template>
 
 <script>
+//import router from "@/router";
+import {EventBus} from "./event-bus.js"
+
 let getProductsFunc = function () {
-  let url = "http://localhost:8090/searchProduct?";
-  this.$http.get(url, {params: {searchWord:this.searchWord}})
-      .then(response => this.products = response.data)
+  EventBus.$emit('search', this.searchWord.word)
 }
 
 export default {

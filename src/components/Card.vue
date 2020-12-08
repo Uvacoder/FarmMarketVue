@@ -67,6 +67,7 @@
   </v-row>
 </template>
 <script>
+import {EventBus} from './event-bus.js'
 
 let getAllProducts = function () {
   let url = "http://localhost:8090/findAllProducts";
@@ -79,22 +80,10 @@ let getLatestProducts = function () {
       .then(response => this.products = response.data)
 }
 
-let getProductsFunc = function () {
-  let url = "http://localhost:8090/searchProduct?";
-  this.$http.get(url, {params: {searchWord:this.searchWord}})
+let getProducts = function (searchWord) {
+  let url = "http://localhost:8090/searchProduct";
+  this.$http.get(url, {params: {searchWord}})
       .then(response => this.products = response.data)
-}
-
-let getProducts = function () {
-  if (this.query == 'All') {
-    this.getAllProducts()
-  }
-  if (this.query == 'Latest') {
-    this.getLatestProducts()
-  }
-  if(this.query == 'Search'){
-    this.getProductsFunc()
-  }
 }
 
 let contactSellerFunc = function () {
@@ -118,14 +107,16 @@ export default {
     query: String
   },
   methods: {
-    getProductsFunc: getProducts,
     contactSeller: contactSellerFunc,
-    getProducts: getProductsFunc,
+    getProducts: getProducts,
     getAllProducts,
     getLatestProducts
   },
   created: function () {
-    this.getProductsFunc()
+    this.getProducts()
+    EventBus.$on('search', searchWord => {
+      this.getProducts(searchWord)
+    })
   }
 
 }
