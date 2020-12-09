@@ -41,8 +41,9 @@
           <v-text-field
               ref="price"
               v-model="product.price"
+              :rules="[()=>!!product.price || 'PLEASE USE . AS A SEPARATOR']"
               label="Price"
-              prefix="$"
+              prefix="€"
           ></v-text-field>
           <v-text-field
               ref="amount"
@@ -103,8 +104,9 @@ let getCategories = function () {
 let addProductFunc = function () {
   let url = this.host + "/newProduct";
   this.$http.post(url, this.product)
-      .then(response => alert(response.data.message));
-  // location.reload();
+      .then(response => alert(response.data.message))
+      this.$refs.dialog.reset()
+      location.reload();
 }
 export default {
   name: "AddNewProductBtn",
@@ -120,8 +122,7 @@ export default {
   }),
   methods: {
     getCategoriesFunc: getCategories,
-    addProduct: addProductFunc,
-
+    addProduct: addProductFunc
   },
 
   created: function () {

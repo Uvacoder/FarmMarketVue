@@ -12,8 +12,11 @@
                   <div class="my-0">
                     <div>{{ item.productDescription }}</div>
                   </div>
+                  <div class="my-0">
+                    <div>{{}}</div>
+                  </div>
                 </v-card-text>
-                <div class="price">$ {{ item.price }}</div>
+                <div class="price">€ {{ item.price }}</div>
                 <v-divider class="mx-4"></v-divider>
                 <v-dialog v-model="dialog" persistent max-width="600px">
                   <template v-slot:activator="{ on, item }">

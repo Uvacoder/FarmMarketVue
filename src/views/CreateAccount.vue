@@ -11,6 +11,8 @@
                         required></v-text-field>
           <v-text-field ref="SellerPhone" v-model="seller.phone" :rules="phoneRules"
                         label="Phone number / for clients to contact" required></v-text-field>
+          <v-text-field ref="SellerAddress" v-model="seller.address" :rules="addressRules"
+                        label="Location / for clients to see" required></v-text-field>
           <v-text-field ref="SellerUsername" v-model="seller.username" :rules="usernameRules" label="Username"
                         required></v-text-field>
           <v-text-field ref="SellerPassword" v-model="seller.password" :rules="passwordRules" label="Password"
@@ -171,6 +173,11 @@ export default {
     phoneRules: [
       v => !!v || 'Phone is required',
       v => (v && v.length > 6 && v.length < 20 && /^\+?\d*$/.test(v)) || 'Phone must be valid',
+    ],
+    address: "",
+    addressRules: [
+        v => !!v || 'Address is requered',
+        v => (v && v.length>4 || 'Location of product to pick up')
     ],
     username: '',
     usernameRules: [
