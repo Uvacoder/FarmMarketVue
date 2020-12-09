@@ -13,7 +13,7 @@
                   <div>{{ item.productDescription }}</div>
                 </div>
               </v-card-text>
-              <div class="price">$ {{ item.price }}</div>
+              <div class="price">€ {{ item.price }}</div>
               <v-divider class="mx-4"></v-divider>
               <v-card-actions>
               <v-dialog v-model="dialog" persistent max-width="600px">
