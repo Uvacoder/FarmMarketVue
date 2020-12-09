@@ -2,13 +2,11 @@
     <div class="heroBlock">
       <v-carousel  :show-arrows="false" hide-delimiters cycle  height="100" >
         <v-carousel-item
-            v-for="(item,i) in items"
-            :key="i"
-            :src="item.src"
+            v-for="item in products"
+            :key="item.id"
+            :src="item.categoryPicture"
             reverse-transition="fade-transition"
             transition="fade-transition"
-
-
         >
           <v-row
               class="fill-height title"
@@ -24,28 +22,34 @@
 </template>
 
 <script>
-  export default {
-    name: 'Hero',
-    data () {
-      return {
-        items: [
-          {
-            src: 'https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-          },
-          {
-            src: 'https://images.unsplash.com/photo-1476837579993-f1d3948f17c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-          },
-          {
-            src: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-          },
-          {
-            src: 'https://images.unsplash.com/photo-1519897831810-a9a01aceccd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80',
-          },
-        ],
-      }
-    },
+import {EventBus} from './event-bus.js'
+let getProducts = function (searchWord) {
+  let url = "http://localhost:8090/searchProduct";
+  this.$http.get(url, {params: {searchWord}})
+      .then(response => this.products = response.data)
+}
+export default {
+  name: 'Hero',
+  data: () => ({
+    products: [],
+    productId: 0,
+  }),
+  props: {
+    query: String
+  },
+  methods: {
+    getProducts: getProducts,
+  },
+  created: function () {
+    this.getProducts()
+    this.getProductsByCategory()
+    EventBus.$on('search', searchWord => {
+      this.getProducts(searchWord)
+      this.getProductsByCategory(searchWord)
+    })
   }
-</script>
+
+}</script>
 
 
 
