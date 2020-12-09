@@ -77,13 +77,13 @@ import MyAccountMenu from "@/components/MyAccountMenu";
 import AddNewProductBtn from "@/components/AddNewProductBtn";
 
 let getSeller = function () {
-  let url = "http://localhost:8090/getSeller";
+  let url = this.host + "/getSeller";
   this.$http.get(url)
       .then(response => this.seller = response.data)
 }
 
 let updateSeller = function (){
-  let url = "http://localhost:8090/updateSeller";
+  let url = this.host + "/updateSeller";
   this.$http.put(url, this.seller)
       .then(response => alert(response.data.message))
 }

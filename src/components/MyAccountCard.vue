@@ -14,7 +14,7 @@
                     <div>{{ item.productDescription }}</div>
                   </div>
                 </v-card-text>
-                <div class="price">$ {{ item.price }}</div>
+                <div class="price">€ {{ item.price }}</div>
                 <v-divider class="mx-4"></v-divider>
                   <v-dialog v-model="dialog" persistent max-width="600px">
                     <template v-slot:activator="{ on, attrs }">
@@ -64,7 +64,7 @@
 <script>
 
 let getProducts = function () {
-  let url = "http://localhost:8090/product";
+  let url = this.host + "/product";
   this.$http.get(url)
       .then(response => this.products = response.data)
 

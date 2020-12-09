@@ -29,7 +29,7 @@ import router from "@/router";
 import Hero from "@/components/Hero";
 
 let loginFunc = function () {
-  let url = "http://localhost:8090/login";
+  let url = this.host + "/login";
   this.$http.post(url, this.user)
       .then(response => {
             localStorage.setItem("user-token", response.data);
