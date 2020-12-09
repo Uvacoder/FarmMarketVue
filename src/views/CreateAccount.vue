@@ -177,7 +177,7 @@ export default {
     address: "",
     addressRules: [
         v => !!v || 'Address is requered',
-        v => (v && v.length>4 || 'Location of product to pick up')
+        v => (v && v.length>3 || 'Location of product to pick up')
     ],
     username: '',
     usernameRules: [

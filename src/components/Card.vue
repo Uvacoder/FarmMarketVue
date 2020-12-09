@@ -11,6 +11,9 @@
               <v-card-text class="cardText">
                 <div class="my-0">
                   <div>{{ item.productDescription }}</div>
+                  <div>Seller: {{item.sellerName}}</div>
+                  <div>Location: {{item.sellerAddress}}</div>
+                  <div>Phone: {{item.sellerPhone}}</div>
                 </div>
               </v-card-text>
               <div class="price">€ {{ item.price }}</div>
@@ -30,11 +33,8 @@
                       <v-row> <p>PRODUCT DESCRIPTION{{products.productDescription}}</p></v-row>
                       <v-row> <p>PRODUCT PRICE{{products.price }}</p></v-row>
                         <v-col cols="12">
-                          <v-textarea v-model="email" color="teal">
-                            <template v-slot:label>
-                              <div>Your message to seller <small>(optional)</small></div>
-                            </template>
-                          </v-textarea>
+                          <v-text-field ref="ContactSeller.emailMessage" placeholder="Your message to seller"></v-text-field>
+<!--                          <v-text-field ref="ContactSeller.emailAddress"></v-text-field>-->
                         </v-col>
                       <v-card-actions>
                         <v-spacer></v-spacer>
@@ -56,26 +56,21 @@
         </div>
       </div>
     </div>
-
   </v-row>
 </template>
 <script>
 import {EventBus} from './event-bus.js'
 
-
-
 let getProducts = function (searchWord) {
-  let url = "http://localhost:8090/searchProduct";
+  let url = this.host + "/searchProduct";
   this.$http.get(url, {params: {searchWord}})
       .then(response => this.products = response.data)
 }
 
 let contactSellerFunc = function () {
-  let url = "http://localhost:8090/contactSeller";
-  let request = {
-    email: this.email
-  }
-  this.$http.post(url, request)
+  let url = this.host + "/contactSeller";
+  let contactSeller = this.emailMessage
+  this.$http.post(url, contactSeller)
       .then(response => this.email = response.data)
 }
 
@@ -85,7 +80,7 @@ export default {
     dialog: false,
     products: [],
     productId: 0,
-    email: "",
+    ContactSeller:{},
   }),
   props: {
     query: String

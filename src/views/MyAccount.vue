@@ -31,7 +31,6 @@ let getProducts = function () {
   let url = this.host + "/product";
   this.$http.get(url)
       .then(response => this.products = response.data)
-
 }
 
 export default {

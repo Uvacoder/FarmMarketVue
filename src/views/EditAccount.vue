@@ -63,7 +63,7 @@
                 </v-text-field>
               </v-col>
             </v-row>
-            
+            <v-btn color="blue darken-1" @click="updateSellerFunc()">SAVE</v-btn>
           </div>
         </v-row>
     </div>
