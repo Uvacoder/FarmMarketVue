@@ -78,7 +78,7 @@ import {EventBus} from './event-bus.js'
 
 
 let getProducts = function (searchName, searchCategory) {
-  let url = "http://localhost:8090/searchProductByCategoryAndName";
+  let url = this.host + "/searchProductByCategoryAndName";
   this.$http.get(url, {params: {searchName, searchCategory}})
 
       .then(response => this.products = response.data)
