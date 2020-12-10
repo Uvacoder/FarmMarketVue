@@ -42,10 +42,8 @@ export default {
   },
   created: function () {
     this.getProducts()
-    this.getProductsByCategory()
     EventBus.$on('search', searchWord => {
       this.getProducts(searchWord)
-      this.getProductsByCategory(searchWord)
     })
   }
 

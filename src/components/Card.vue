@@ -106,6 +106,10 @@ export default {
 
     EventBus.$on('search', searchWord => {
       this.getProducts(searchWord)
+    })
+
+    EventBus.$on('searchByCategory', searchWord => {
+      console.log(searchWord)
       this.getProductsByCategory(searchWord)
     })
   }

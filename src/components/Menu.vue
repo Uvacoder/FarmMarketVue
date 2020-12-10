@@ -2,8 +2,7 @@
       <v-col  >
         <div class="menu">
         <v-card outlined elevation="2" width="200">
-          <v-list-item-group v-model="model"
-                             active-class="border"
+          <v-list-item-group active-class="border"
                              color="indigo">
           <v-list-item>
             <v-list-item-content>
@@ -16,12 +15,12 @@
 <!--              </v-list-item-content>-->
 <!--            </v-list-item>-->
 
-            <v-list-item v-for="item in categories" :key="item.id" link>
+            <v-list-item @click="getProductsByCategory(item.categoryName)" v-for="item in categories" :key="item.id" link>
               <v-list-item-icon>
                 <v-icon>{{ item.categoryIcon }}</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title  @click="getProductsByCategory(item.categoryName)">{{ item.categoryName }}</v-list-item-title>
+                <v-list-item-title>{{ item.categoryName }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list>
@@ -33,8 +32,8 @@
 
 <script>
 import {EventBus} from "./event-bus.js"
-let getProductsByCategoryFunc = function () {
-  EventBus.$emit('search', this.searchWord.word)
+let getProductsByCategoryFunc = function (categoryName) {
+  EventBus.$emit('searchByCategory', categoryName)
 }
 
 let getAllCategories = function () {
