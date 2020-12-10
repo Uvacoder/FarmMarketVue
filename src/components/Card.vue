@@ -5,7 +5,6 @@
         <div class="row ">
           <v-col cols="4" v-for="item in products" :key="item.id">
             <div class="card">
-
               <v-card>
                 <v-img v-bind:src="item.categoryPicture" height="150"></v-img>
                 <v-card-title class="card-title">{{ item.productName }}</v-card-title>

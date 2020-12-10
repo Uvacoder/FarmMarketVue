@@ -27,11 +27,11 @@ import MyAccountMenu from "@/components/MyAccountMenu";
 import AddNewProductBtn from "@/components/AddNewProductBtn";
 import MyAccountCard from "@/components/MyAccountCard";
 
-let getProducts = function () {
-  let url = this.host + "/product";
-  this.$http.get(url)
-      .then(response => this.products = response.data)
-}
+// let getProducts = function () {
+//   let url = this.host + "/product";
+//   this.$http.get(url)
+//       .then(response => this.products = response.data)
+// }
 
 export default {
   name: 'MyAccount',
@@ -48,7 +48,7 @@ export default {
   }),
 
   methods: {
-    getProductsFunc: getProducts,
+    // getProductsFunc: getProducts,
     resetForm() {
       this.errorMessages = []
       this.formHasErrors = false
@@ -69,7 +69,7 @@ export default {
   },
 
   created: function () {
-    this.getProductsFunc()
+    // this.getProductsFunc()
   },
 
   watch: {

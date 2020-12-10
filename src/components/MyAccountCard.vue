@@ -3,11 +3,11 @@
     <div class="v-main__wrap">
       <div class="container">
         <div class="row ">
-          <v-col cols="4" v-for="(item) in products" :key="item.id">
+          <v-col cols="4" v-for="item in products" :key="item.id">
             <div class="card">
               <v-card>
                 <v-img v-bind:src="item.categoryPicture" height="150"></v-img>
-                <v-card-title class="card-title">{{item.productName + item.id }}</v-card-title>
+                <v-card-title class="card-title">{{item.productName}}</v-card-title>
                 <v-card-text class="cardText">
                   <div class="my-0">
                     <div>{{item.productDescription}}</div>
@@ -66,7 +66,7 @@
 <script>
 
 let getProducts = function () {
-  let url = this.host + "/product";
+  let url = this.host + "/searchProductByCategoryAndNameAuth";
   this.$http.get(url)
       .then(response => this.products = response.data)
 }
