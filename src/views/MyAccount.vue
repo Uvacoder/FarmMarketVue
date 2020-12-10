@@ -28,10 +28,9 @@ import AddNewProductBtn from "@/components/AddNewProductBtn";
 import MyAccountCard from "@/components/MyAccountCard";
 
 let getProducts = function () {
-  let url = "http://localhost:8090/product";
+  let url = this.host + "/product";
   this.$http.get(url)
       .then(response => this.products = response.data)
-
 }
 
 export default {

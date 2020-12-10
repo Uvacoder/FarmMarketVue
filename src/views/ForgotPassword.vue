@@ -30,7 +30,7 @@
 import Hero from "@/components/Hero";
 
 let updatePasswordFunc = function () {
-  let url = "http://localhost:8090/updateSellerPassword";
+  let url = this.host + "/updateSellerPassword";
   this.$http.put(url, this.seller)
       .then(response => {alert(response.data.message)
         this.reset()})

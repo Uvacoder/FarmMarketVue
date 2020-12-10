@@ -8,6 +8,7 @@ import './scss/main.scss'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios;
+Vue.prototype.host = 'http://localhost:8090';
 const token = localStorage.getItem("user-token")
 if (token){
   axios.defaults.headers.common['Authorization']="Bearer "+token

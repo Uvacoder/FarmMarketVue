@@ -41,13 +41,14 @@
           <v-text-field
               ref="price"
               v-model="product.price"
+              :rules="[()=>!!product.price ]"
               label="Price"
-              prefix="$"
+              prefix="€"
           ></v-text-field>
           <v-text-field
               ref="amount"
               v-model="product.amount"
-              :rules="[() => !!product.amount || 'This field is required']"
+              :rules="[() => !!product.amount ]"
               label="Amount/Quantity"
               required
           ></v-text-field>
@@ -80,9 +81,9 @@
           <v-btn
               color="success"
               dark
-              @click="addProduct(), dialog2=false"
+              @click="addProduct()"
           >
-            Add Product
+            Save Product
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -95,16 +96,21 @@
 import Upload from "@/components/Upload";
 
 let getCategories = function () {
-  let url = "http://localhost:8090/category";
+  let url = this.host + "/category";
   this.$http.get(url)
       .then(response => this.categories = response.data)
 }
 
 let addProductFunc = function () {
-  let url = "http://localhost:8090/newProduct";
+  let url = this.host + "/newProduct";
   this.$http.post(url, this.product)
-      .then(response => alert(response.data.message));
-  // location.reload();
+      .then((response) => {
+            alert(response.data.message)
+            //this.dialog2 = false
+           // this.product = {}
+            location.reload()
+          }
+      )
 }
 export default {
   name: "AddNewProductBtn",
@@ -120,8 +126,7 @@ export default {
   }),
   methods: {
     getCategoriesFunc: getCategories,
-    addProduct: addProductFunc,
-
+    addProduct: addProductFunc
   },
 
   created: function () {

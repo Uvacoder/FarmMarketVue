@@ -11,12 +11,15 @@
               <v-card-text class="cardText">
                 <div class="my-0">
                   <div>{{ item.productDescription }}</div>
+                  <div>Seller: {{item.sellerName}}</div>
+                  <div>Location: {{item.sellerAddress}}</div>
+                  <div>Phone: {{item.sellerPhone}}</div>
                 </div>
               </v-card-text>
-              <div class="price">$ {{ item.price }}</div>
+              <div class="price">€ {{ item.price }}</div>
               <v-divider class="mx-4"></v-divider>
               <v-card-actions>
-              <v-dialog v-model="dialog" persistent max-width="600px">
+              <v-dialog v-model="item.dialog" persistent max-width="600px">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn color="primary" dark v-bind="attrs" v-on="on">Contact</v-btn>
                 </template>
@@ -26,19 +29,12 @@
                   </v-card-title>
                   <v-card-text>
                     <v-container>
-                      <v-row><p>PRODUCT NAME{{products.productName}}</p> </v-row>
-                      <v-row> <p>PRODUCT DESCRIPTION{{products.productDescription}}</p></v-row>
-                      <v-row> <p>PRODUCT PRICE{{products.price }}</p></v-row>
                         <v-col cols="12">
-                          <v-textarea v-model="email" color="teal">
-                            <template v-slot:label>
-                              <div>Your message to seller <small>(optional)</small></div>
-                            </template>
-                          </v-textarea>
+                          <v-text-field v-model="emailMessage" placeholder="Your message to seller"></v-text-field>
                         </v-col>
                       <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" @click="dialog=false">Close</v-btn>
+                        <v-btn color="blue darken-1" @click="item.dialog=false">Close</v-btn>
                         <v-btn color="blue darken-1" @click="contactSeller()">Send email to seller</v-btn>
                       </v-card-actions>
                     </v-container>
@@ -56,42 +52,42 @@
         </div>
       </div>
     </div>
-
   </v-row>
 </template>
 <script>
 import {EventBus} from './event-bus.js'
 
-
-
 let getProducts = function (searchWord) {
-  let url = "http://localhost:8090/searchProduct";
+  let url = this.host + "/searchProduct";
   this.$http.get(url, {params: {searchWord}})
       .then(response => this.products = response.data)
 }
 
-let contactSellerFunc = function () {
-  let url = "http://localhost:8090/contactSeller";
-  let request = {
-    email: this.email
-  }
-  this.$http.post(url, request)
+let contactSellerFunc = function (emailMessage) {
+  let url = this.host + "/contactSeller";
+  this.$http.post(url, {params:{emailMessage}})
       .then(response => this.email = response.data)
 }
 
 export default {
   name: 'Card',
   data: () => ({
-    dialog: false,
     products: [],
     productId: 0,
-    email: "",
+    emailMessage: ""
   }),
   props: {
     query: String
   },
+  computed: {
+    form() {
+      return {
+        emailMessage: this.emailMessage
+      }
+    },
+  },
   methods: {
-    contactSeller: contactSellerFunc,
+     contactSeller: contactSellerFunc,
     getProducts: getProducts,
   },
   created: function () {
