@@ -17,21 +17,18 @@
                   <v-icon>mdi-map-marker</v-icon>
                   <div>{{ item.sellerAddress }}</div>
                 </v-card-actions>
-
                 <v-card-actions class="card-title2">
                   <v-icon>mdi-account</v-icon>
-                  <div >{{ item.sellerName }}</div>
+                  <div>{{ item.sellerName }}</div>
                   <v-spacer></v-spacer>
                   <v-icon>mdi-phone</v-icon>
-                  <div>{{ item.sellerPhone}}</div>
-
+                  <div>{{ item.sellerPhone }}</div>
                 </v-card-actions>
-
                 <v-divider class="mx-4"></v-divider>
                 <v-card-actions>
-                  <v-dialog v-model="dialog" persistent max-width="600px">
+                  <v-dialog v-model="item.dialog" persistent max-width="600px">
                     <template v-slot:activator="{ on, attrs }">
-                      <v-btn color="primary" dark v-bind="attrs" v-on="on">€{{item.price}}</v-btn>
+                      <v-btn color="primary" dark v-bind="attrs" v-on="on">€{{ item.price }}</v-btn>
                     </template>
                     <v-card>
                       <v-card-title>
@@ -39,9 +36,6 @@
                       </v-card-title>
                       <v-card-text>
                         <v-container>
-                          <v-row><p>PRODUCT NAME{{ products.productName }}</p></v-row>
-                          <v-row><p>PRODUCT DESCRIPTION{{ products.productDescription }}</p></v-row>
-                          <v-row><p>PRODUCT PRICE{{ products.price }}</p></v-row>
                           <v-col cols="12">
                             <v-textarea v-model="email" color="teal">
                               <template v-slot:label>
@@ -51,8 +45,8 @@
                           </v-col>
                           <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn color="blue darken-1" @click="dialog=false">Close</v-btn>
-                            <v-btn color="blue darken-1" @click="contactSeller()">Send email to seller</v-btn>
+                            <v-btn color="blue darken-1" @click="item.dialog=false">Close</v-btn>
+                            <v-btn color="blue darken-1" @click="contactSeller()">Contact Seller</v-btn>
                           </v-card-actions>
                         </v-container>
                       </v-card-text>
@@ -98,7 +92,6 @@ let contactSellerFunc = function () {
 export default {
   name: 'Card',
   data: () => ({
-    dialog: false,
     products: [],
     productId: 0,
     email: "",
