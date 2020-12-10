@@ -6,7 +6,7 @@
                            color="indigo">
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title align="center" class="subSubHeader">PRODUCTS</v-list-item-title>
+              <v-list-item-title align="center" class="subSubHeader" @click="getProducts()">ALL PRODUCTS</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list dense nav>
