@@ -63,7 +63,7 @@
                 </v-text-field>
               </v-col>
             </v-row>
-            
+            <v-btn color="blue darken-1" @click="updateSellerFunc()">SAVE</v-btn>
           </div>
         </v-row>
     </div>
@@ -77,13 +77,14 @@ import MyAccountMenu from "@/components/MyAccountMenu";
 import AddNewProductBtn from "@/components/AddNewProductBtn";
 
 let getSeller = function () {
-  let url = "http://localhost:8090/getSeller";
+  let url = this.host + "/getSeller";
+  console.log("get seller2: " + url);
   this.$http.get(url)
       .then(response => this.seller = response.data)
 }
 
 let updateSeller = function (){
-  let url = "http://localhost:8090/updateSeller";
+  let url = this.host + "/updateSeller";
   this.$http.put(url, this.seller)
       .then(response => alert(response.data.message))
 }

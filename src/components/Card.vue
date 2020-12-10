@@ -5,6 +5,7 @@
         <div class="row ">
           <v-col cols="4" v-for="item in products" :key="item.id">
             <div class="card">
+
               <v-card>
                 <v-img v-bind:src="item.categoryPicture" height="150"></v-img>
                 <v-card-title class="card-title">{{ item.productName }}</v-card-title>
@@ -64,6 +65,7 @@
                   </v-btn>
                 </v-card-actions>
               </v-card>
+
             </div>
           </v-col>
         </div>
@@ -74,18 +76,17 @@
 <script>
 import {EventBus} from './event-bus.js'
 
+
 let getProducts = function (searchName, searchCategory) {
   let url = "http://localhost:8090/searchProductByCategoryAndName";
   this.$http.get(url, {params: {searchName, searchCategory}})
+
       .then(response => this.products = response.data)
 }
 
-let contactSellerFunc = function () {
-  let url = "http://localhost:8090/contactSeller";
-  let request = {
-    email: this.email
-  }
-  this.$http.post(url, request)
+let contactSellerFunc = function (emailMessage) {
+  let url = this.host + "/contactSeller";
+  this.$http.post(url, {params:{emailMessage}})
       .then(response => this.email = response.data)
 }
 
@@ -94,15 +95,24 @@ export default {
   data: () => ({
     products: [],
     productId: 0,
+
     email: "",
     searchName: null,
     searchCategory: null
+
   }),
   props: {
     query: String
   },
+  computed: {
+    form() {
+      return {
+        emailMessage: this.emailMessage
+      }
+    },
+  },
   methods: {
-    contactSeller: contactSellerFunc,
+     contactSeller: contactSellerFunc,
     getProducts: getProducts,
     // getProductsByCategory: getProductsByCategory,
   },
