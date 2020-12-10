@@ -14,14 +14,15 @@
                   </div>
                 </v-card-text>
                 <v-card-actions class="card-title2">
-                  <v-icon>mdi-map-marker</v-icon>
+                  <v-icon size="medium">mdi-map-marker</v-icon>
                   <div>{{ item.sellerAddress }}</div>
                 </v-card-actions>
                 <v-card-actions class="card-title2">
-                  <v-icon>mdi-account</v-icon>
+                  <v-icon size="medium">mdi-account</v-icon>
                   <div>{{ item.sellerName }}</div>
-                  <v-spacer></v-spacer>
-                  <v-icon>mdi-phone</v-icon>
+                </v-card-actions>
+                <v-card-actions class="card-title2">
+                  <v-icon size="medium">mdi-phone</v-icon>
                   <div>{{ item.sellerPhone }}</div>
                 </v-card-actions>
                 <v-divider class="mx-4"></v-divider>
