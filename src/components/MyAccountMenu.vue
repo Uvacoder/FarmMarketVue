@@ -48,6 +48,7 @@ let logout = function (){
 }
 let getSeller = function () {
   let url = this.host + "/getSeller";
+  console.log("get seller: " + url);
   this.$http.get(url)
       .then(response => this.seller = response.data)
 }

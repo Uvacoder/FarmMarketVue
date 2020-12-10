@@ -41,14 +41,14 @@
           <v-text-field
               ref="price"
               v-model="product.price"
-              :rules="[()=>!!product.price || 'PLEASE USE . AS A SEPARATOR']"
+              :rules="[()=>!!product.price ]"
               label="Price"
               prefix="€"
           ></v-text-field>
           <v-text-field
               ref="amount"
               v-model="product.amount"
-              :rules="[() => !!product.amount || 'This field is required']"
+              :rules="[() => !!product.amount ]"
               label="Amount/Quantity"
               required
           ></v-text-field>
@@ -81,9 +81,9 @@
           <v-btn
               color="success"
               dark
-              @click="addProduct(), dialog2=false"
+              @click="addProduct()"
           >
-            Add Product
+            Save Product
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -104,9 +104,13 @@ let getCategories = function () {
 let addProductFunc = function () {
   let url = this.host + "/newProduct";
   this.$http.post(url, this.product)
-      .then(response => alert(response.data.message))
-      this.$refs.dialog.reset()
-      location.reload();
+      .then((response) => {
+            alert(response.data.message)
+            //this.dialog2 = false
+           // this.product = {}
+            location.reload()
+          }
+      )
 }
 export default {
   name: "AddNewProductBtn",

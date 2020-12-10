@@ -29,12 +29,11 @@
                   </v-card-title>
                   <v-card-text>
                     <v-container>
-                      <v-row><p>PRODUCT NAME{{products.productName}}</p> </v-row>
-                      <v-row> <p>PRODUCT DESCRIPTION{{products.productDescription}}</p></v-row>
-                      <v-row> <p>PRODUCT PRICE{{products.price }}</p></v-row>
+                      <v-row><p>PRODUCT NAME{{}}</p> </v-row>
+                      <v-row> <p>PRODUCT DESCRIPTION{{}}</p></v-row>
+                      <v-row> <p>PRODUCT PRICE{{}}</p></v-row>
                         <v-col cols="12">
-                          <v-text-field ref="ContactSeller.emailMessage" placeholder="Your message to seller"></v-text-field>
-<!--                          <v-text-field ref="ContactSeller.emailAddress"></v-text-field>-->
+                          <v-text-field v-model="emailMessage" placeholder="Your message to seller"></v-text-field>
                         </v-col>
                       <v-card-actions>
                         <v-spacer></v-spacer>
@@ -67,10 +66,9 @@ let getProducts = function (searchWord) {
       .then(response => this.products = response.data)
 }
 
-let contactSellerFunc = function () {
+let contactSellerFunc = function (emailMessage) {
   let url = this.host + "/contactSeller";
-  let contactSeller = this.emailMessage
-  this.$http.post(url, contactSeller)
+  this.$http.post(url, {params:{emailMessage}})
       .then(response => this.email = response.data)
 }
 
@@ -80,13 +78,20 @@ export default {
     dialog: false,
     products: [],
     productId: 0,
-    ContactSeller:{},
+    emailMessage: ""
   }),
   props: {
     query: String
   },
+  computed: {
+    form() {
+      return {
+        emailMessage: this.emailMessage
+      }
+    },
+  },
   methods: {
-    contactSeller: contactSellerFunc,
+     contactSeller: contactSellerFunc,
     getProducts: getProducts,
   },
   created: function () {

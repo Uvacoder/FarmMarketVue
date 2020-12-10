@@ -78,6 +78,7 @@ import AddNewProductBtn from "@/components/AddNewProductBtn";
 
 let getSeller = function () {
   let url = this.host + "/getSeller";
+  console.log("get seller2: " + url);
   this.$http.get(url)
       .then(response => this.seller = response.data)
 }

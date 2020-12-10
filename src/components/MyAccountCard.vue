@@ -3,57 +3,55 @@
     <div class="v-main__wrap">
       <div class="container">
         <div class="row ">
-          <v-col cols="4" v-for="item in products" :key="item.id">
+          <v-col cols="4" v-for="(item, index) in products" :key="item.id">
             <div class="card">
               <v-card>
                 <v-img v-bind:src="item.categoryPicture" height="150"></v-img>
-<!--                <v-img height="100" src="/pictures/apple.jpg"></v-img>-->
-                <v-card-title class="card-title">{{ item.productName }}</v-card-title>
+                <v-card-title class="card-title">{{item.productName + item.id }}</v-card-title>
                 <v-card-text class="cardText">
                   <div class="my-0">
-                    <div>{{ item.productDescription }}</div>
+                    <div>{{item.productDescription}}</div>
                   </div>
                 </v-card-text>
-                <div class="price">€ {{ item.price }}</div>
+                <div class="price">€ {{item.price}}</div>
                 <v-divider class="mx-4"></v-divider>
-                  <v-dialog v-model="dialog" persistent max-width="600px">
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-btn color="error" class="mr-4" @click="removeProduct()">Delete product</v-btn>
-                      <v-btn color="primary" dark v-bind="attrs" v-on="on">Edit product</v-btn>
-                    </template>
-                    <v-card>
-                      <v-card-title>
-                        <span class="headline">Product details</span>
-                      </v-card-title>
-                      <v-card-text>
-                        <v-container>
-                          <!--                        <v-row>-->
-                          <!--                          <v-col cols="12" sm="6">-->
-                          <!--                            <v-autocomplete :items="['Skiing', 'Ice hockey', 'Soccer']" label="Product category" multiple></v-autocomplete>-->
-                          <!--                          </v-col>-->
-                          <!--                          <v-col cols="12" sm="6" md="4">-->
-                          <!--                            <v-text-field label="Product name" aria-required="true">{{item.productName }}-->
-                          <!--                            </v-text-field>-->
-                          <!--                          </v-col>-->
-                          <!--                          <v-col cols="12">-->
-                          <!--                            <v-text-field label="Product description" required></v-text-field>-->
-                          <!--                          </v-col>-->
-                          <!--                          <v-col cols="12" sm="6">-->
-                          <!--                            <v-text-field label="Price" required></v-text-field>-->
-                          <!--                          </v-col>-->
-                          <!--                          <v-col cols="12" sm="6">-->
-                          <!--                            <v-text-field label="Amount" required></v-text-field>-->
-                          <!--                          </v-col>-->
-                          <!--                        </v-row>-->
-                          <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn color="blue darken-1" @click="dialog=false">Close</v-btn>
-                            <v-btn color="blue darken-1" @click="updateProductFunc()">Save</v-btn>
-                          </v-card-actions>
-                        </v-container>
-                      </v-card-text>
-                    </v-card>
-                  </v-dialog>
+                <v-dialog v-model="dialog" persistent max-width="600px">
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn color="primary" dark v-bind="attrs" v-on="on">Edit product</v-btn>
+                  </template>
+                  <v-card>
+                    <v-card-title>
+                      <span class="headline">Product details{{item.id}}</span>
+                    </v-card-title>
+                    <v-card-text>
+                      <v-container>
+                        <v-row>
+                          <v-col cols="12" sm="6">
+                          </v-col>
+                          <v-col cols="12" sm="6" md="4">
+                            <v-text-field label="Product name" aria-required="true">{{index }}
+                            </v-text-field>
+                          </v-col>
+                          <v-col cols="12">
+                            <v-text-field label="Product description" required></v-text-field>
+                          </v-col>
+                          <v-col cols="12" sm="6">
+                            <v-text-field label="Price" required></v-text-field>
+                          </v-col>
+                          <v-col cols="12" sm="6">
+                            <v-text-field label="Amount" required></v-text-field>
+                          </v-col>
+                        </v-row>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn color="blue darken-1" @click="dialog=false">Close</v-btn>
+                          <v-btn color="blue darken-1" @click="updateProductFunc()">Save</v-btn>
+                        </v-card-actions>
+                      </v-container>
+                    </v-card-text>
+                  </v-card>
+                </v-dialog>
+                <v-btn color="error" class="mr-4" @click="removeProduct(item.id)">Delete product</v-btn>
               </v-card>
             </div>
           </v-col>
@@ -78,10 +76,13 @@ let getProducts = function () {
 //       .catch(result => alert(result.response.data.message))
 // }
 
-let removeProduct = function(){
+let removeProduct = function (id) {
   let url = this.host + "/removeProduct";
-  this.$http.delete(url)
-      .then(response => this.products = response.data)
+  this.$http.delete(url, {params: {id}})
+      .then(response => {
+        (this.products = response.data)
+      location.reload()}
+)
 }
 
 
@@ -100,7 +101,7 @@ export default {
   methods: {
     getProductsFunc: getProducts,
     // updateProductFunc: updateProduct,
-    removeProduct : removeProduct,
+    removeProduct: removeProduct,
     resetForm() {
       this.errorMessages = []
       this.formHasErrors = false

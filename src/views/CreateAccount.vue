@@ -5,17 +5,17 @@
     <div class="block mainBlock">
       <v-container>
         <v-form ref="form" v-model="valid">
-          <v-text-field ref="SellerName" v-model="seller.name" :rules="nameRules" label="Name / for clients to appear"
+          <v-text-field v-model="seller.name" :rules="nameRules" label="Name / for clients to appear"
                         required></v-text-field>
-          <v-text-field ref="SellerEmail" v-model="seller.email" :rules="emailRules" label="E-mail"
+          <v-text-field v-model="seller.email" :rules="emailRules" label="E-mail"
                         required></v-text-field>
-          <v-text-field ref="SellerPhone" v-model="seller.phone" :rules="phoneRules"
+          <v-text-field v-model="seller.phone" :rules="phoneRules"
                         label="Phone number / for clients to contact" required></v-text-field>
-          <v-text-field ref="SellerAddress" v-model="seller.address" :rules="addressRules"
+          <v-text-field v-model="seller.address" :rules="addressRules"
                         label="Location / for clients to see" required></v-text-field>
-          <v-text-field ref="SellerUsername" v-model="seller.username" :rules="usernameRules" label="Username"
+          <v-text-field v-model="seller.username" :rules="usernameRules" label="Username"
                         required></v-text-field>
-          <v-text-field ref="SellerPassword" v-model="seller.password" :rules="passwordRules" label="Password"
+          <v-text-field v-model="seller.password" :rules="passwordRules" label="Password"
                         :append-icon="value ? 'mdi-eye' : 'mdi-eye-off'"
                         @click:append="() => (value = !value)" :type="value ? 'password' : 'text'"
                         required></v-text-field>
@@ -192,18 +192,6 @@ export default {
 
     seller: {},
     checkbox: false,
-    /*
-    computed: {
-      form() {
-        return {
-          sellerName: this.seller.Name,
-          sellerEmail: this.seller.Email,
-          sellerUsername: this.seller.Username,
-          sellerPassword: this.seller.Passwoed,
-          sellerPhone: this.seller.Phone,
-        }
-      },
-    }*/
   }),
 
   methods: {
