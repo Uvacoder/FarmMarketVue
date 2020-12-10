@@ -11,10 +11,10 @@
                           @click:append="() => (value = !value)" :type="value ? 'password' : 'text'"
                           required v-model="user.password"></v-text-field>
             <v-btn :disabled="!valid" class="mr-4" @click="login()">Sign in</v-btn>
-            <v-btn class="mr-4">
+            <v-btn to="/create_account" class="mr-4">
               <router-link to="/create_account">Sign up</router-link>
             </v-btn>
-            <v-btn class="mr-4">
+            <v-btn to="/forgot_password" class="mr-4">
               <router-link to="/forgot_password">Forgot your password?</router-link>
             </v-btn>
           </v-card-text>

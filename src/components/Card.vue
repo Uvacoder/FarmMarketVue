@@ -19,7 +19,7 @@
               <div class="price">€ {{ item.price }}</div>
               <v-divider class="mx-4"></v-divider>
               <v-card-actions>
-              <v-dialog v-model="dialog" persistent max-width="600px">
+              <v-dialog v-model="item.dialog" persistent max-width="600px">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn color="primary" dark v-bind="attrs" v-on="on">Contact</v-btn>
                 </template>
@@ -29,15 +29,12 @@
                   </v-card-title>
                   <v-card-text>
                     <v-container>
-                      <v-row><p>PRODUCT NAME{{}}</p> </v-row>
-                      <v-row> <p>PRODUCT DESCRIPTION{{}}</p></v-row>
-                      <v-row> <p>PRODUCT PRICE{{}}</p></v-row>
                         <v-col cols="12">
                           <v-text-field v-model="emailMessage" placeholder="Your message to seller"></v-text-field>
                         </v-col>
                       <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" @click="dialog=false">Close</v-btn>
+                        <v-btn color="blue darken-1" @click="item.dialog=false">Close</v-btn>
                         <v-btn color="blue darken-1" @click="contactSeller()">Send email to seller</v-btn>
                       </v-card-actions>
                     </v-container>
@@ -75,7 +72,6 @@ let contactSellerFunc = function (emailMessage) {
 export default {
   name: 'Card',
   data: () => ({
-    dialog: false,
     products: [],
     productId: 0,
     emailMessage: ""
