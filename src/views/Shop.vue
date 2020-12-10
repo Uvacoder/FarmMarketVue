@@ -12,9 +12,9 @@
             <Card/>
           </div>
         </v-row>
-        <div class="text-center">
-          <v-pagination v-model="page" :length="15" :total-visible="7"></v-pagination>
-        </div>
+<!--        <div class="text-center">-->
+<!--          <v-pagination v-model="page" :length="15" :total-visible="7"></v-pagination>-->
+<!--        </div>-->
       </v-container>
     </div>
   </v-main>
