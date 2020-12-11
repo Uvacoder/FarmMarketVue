@@ -1,5 +1,5 @@
 <template>
-  <v-card height="300" width="200">
+  <v-card height="270" width="200">
     <v-navigation-drawer class="deep-orange accent-5" dark permanent>
       <v-list>
 
@@ -23,9 +23,7 @@
               <router-link to="edit_account" class="myMenuBtn">Edit Account</router-link>
             </v-list-item-title>
         </v-list-item>
-
       </v-list>
-
       <template v-slot:append>
         <div class="pa-2">
           <v-btn block @click="logoutFunc()">
